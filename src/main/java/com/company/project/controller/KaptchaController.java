@@ -26,7 +26,7 @@ import java.io.IOException;
 @RequestMapping("/sys")
 public class KaptchaController {
     /**
-     * 获取验证码图片
+     * 获取验证码图片 测试github 可忽略
      * Gets captcha code.
      *
      * @param request  the request
