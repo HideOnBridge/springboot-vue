@@ -56,6 +56,7 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -170,10 +171,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="version 1.2 test" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="219" y="5" key="CommitChangelistDialog2" timestamp="1611885572558">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="274" y="6" key="CommitChangelistDialog2" timestamp="1611891499985">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="219" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1611885572558" />
+    <state x="274" y="6" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1611891499985" />
     <state x="592" y="220" key="FileChooserDialogImpl" timestamp="1611885011827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -240,18 +242,20 @@
     </state>
     <state x="370" y="110" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611883855939" />
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611628200412" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1611885296541">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="451" y="184" key="Vcs.Push.Dialog.v2" timestamp="1611891528625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1611885296541" />
+    <state x="451" y="184" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611891528625" />
     <state x="461" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1611881710591">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="461" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1611881710591" />
-    <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611885556966">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="703" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611891489401">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1611885556966" />
+    <state x="703" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611891489401" />
     <state x="138" y="0" width="814" height="571" key="dock-window-1" timestamp="1611882463929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
