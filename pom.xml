@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.company.project</groupId>
@@ -49,6 +49,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <!--从Spring Boot 2.3 Release Notes中可以发现，原来从2.3版本开始，Spring Boot的starter包不再默认包含spring-boot-starter-validation库了
+        ，也就是说如果没有声明引入该库，将会提示javax.validation.*相关的类找不到，所以要继续使用@ Valid，@ NotEmpty等注解的话，我们需要引入该库。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!--monngo-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <version>2.3.0.RELEASE</version>
+        </dependency>
+        <!-- hutool-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
 
         <!--数据源-->
         <dependency>

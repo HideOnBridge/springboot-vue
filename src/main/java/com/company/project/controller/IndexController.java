@@ -130,4 +130,13 @@ public class IndexController {
     public String sysFiles() {
         return "sysfiles/list";
     }
+    /**
+     * @param
+     * @date 2021/1/29
+     * @return 跳转导入文件视图
+     */
+    @GetMapping("/data/upload")
+    public String fileUpload(){
+        return "dataUpload/data_list";
+    }
 }

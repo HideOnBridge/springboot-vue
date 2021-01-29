@@ -11,16 +11,6 @@ spring:
           password: 123456
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://192.168.1.170:3306/company_project?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2b8
-#        oracle:
-#          username: root
-#          password: 123456
-#          driver-class-name: oracle.jdbc.driver.OracleDriver
-#          url: jdbc:oracle:thin:@localhost:1521/company_project
-#        sqlServer:
-#          username: sa
-#          password: 123456
-#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#          url: jdbc:sqlserver://localhost:1433;databaseName=company_project
   redis:
     host: 47.93.238.79 # Redis服务器地址
     database: 5 # Redis数据库索引（默认为0）
@@ -33,6 +23,17 @@ spring:
         max-idle: 8 # 连接池中的最大空闲连接
         min-idle: 0 # 连接池中的最小空闲连接
     timeout: 3000ms # 连接超时时间（毫秒
+
+  data:
+    mongodb:
+#      username: admin
+#      password: admin123456
+#      database: admin
+#      host: 192:168:1:170
+#      port: 27017
+#      grid-fs-database: admin
+      uri: mongodb://admin:admin123456@192.168.1.170:27017/admin
+#      uri: mongodb://admin:admin123456@192:168:1:170:27017/admin
 
 file:
   #文件上传目录 绝对路径 末尾请加 /

@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/css/custom.form.css">
-    <style>
-        .custom-tree-item-clicked
-        {
-            color:#FC9003
-        }
-    </style>
 </head>
 <body>
 <div class="panel panel-default operation_user" hidden>
@@ -62,48 +55,47 @@
         </form>
     </div>
 </div>
-<!-- 左树 -->
 <div class="layui-fluid">
     <div class="layui-row layui-col-space15">
-<!--        <div class="layui-col-sm12 layui-col-md4 layui-col-lg2">-->
-<!--            <div class="layui-card">-->
-<!--                <div class="layui-card-body mini-bar" id="leftTree">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="layui-col-sm12 layui-col-md4 layui-col-lg2">-->
+        <!--            <div class="layui-card">-->
+        <!--                <div class="layui-card-body mini-bar" id="leftTree">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="layui-col-sm12 layui-col-md8 layui-col-lg10">
             <div class="user_table_div">
+                <!--搜索框-->
                 <div id="searchParam" shiro:hasPermission="sys:user:list">
-                    <div class="layui-form-item">
-                        <div class="layui-input-inline">
-                            <input type="text" id="username" class="layui-input" autocomplete="off" placeholder="请输入账号">
-                        </div>
-                        <div class="layui-input-inline">
-                            <input type="text" id="nickName" class="layui-input" autocomplete="off" placeholder="请输用户昵称">
-                        </div>
-                        <div class="layui-input-inline">
-                            <input type="text" readonly class="layui-input" id="createTime" placeholder="创建时间">
-                        </div>
-                        <div class="layui-input-inline layui-form">
-                            <select id="status">
-                                <option value="">请选择账号状态</option>
-                                <option value="1">正常</option>
-                                <option value="2">禁用</option>
-                            </select>
-                        </div>
-                        <div class="layui-input-inline ">
-                            <button class="layui-btn" onclick="search()" id="search">查询</button>
-                        </div>
-                    </div>
+<!--                    <div class="layui-form-item">-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input type="text" id="username" class="layui-input" autocomplete="off" placeholder="请输入账号">-->
+<!--                        </div>-->
+<!--                        <div class="layui-input-inline">    -->
+<!--                            <input type="text" id="nickName" class="layui-input" autocomplete="off" placeholder="请输用户昵称">-->
+<!--                        </div>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <input type="text" readonly class="layui-input" id="createTime" placeholder="创建时间">-->
+<!--                        </div>-->
+<!--                        <div class="layui-input-inline layui-form">-->
+<!--                            <select id="status">-->
+<!--                                <option value="">请选择账号状态</option>-->
+<!--                                <option value="1">正常</option>-->
+<!--                                <option value="2">禁用</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div class="layui-input-inline ">-->
+<!--                            <button class="layui-btn" onclick="search()" id="search">查询</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 </div>
-                <table class="layui-hide" id="user_table" lay-filter="user_table"></table>
+                <!--用户列表-->
+                <table class="layui-hide" id="user_table" lay-filter="user_table" ></table>
             </div>
-
         </div>
     </div>
 </div>
-
 <div id="deptTree" style="display: none"></div>
 <div id="roles" class="demo-transfer" style="display: none"></div>
 </body>
@@ -121,6 +113,7 @@
 </script>
 <script src="/layui/layui.all.js"></script>
 <script src="/js/core.util.js"></script>
+
 <script>
     //获取token
     var token = CoreUtil.getData("access_token");
@@ -138,69 +131,24 @@
     var startTime = null;
     var endTime = null;
     layui.use(['table', 'layer', 'laydate', 'tree', 'transfer'], function () {
-
-        initLeftTree();
-
+        //initLeftTree();
         //加载table
         tableIns1 = table.render({
             elem: '#user_table'
             , contentType: 'application/json'
             , headers: {"authorization": token}
             , page: true //开启分页
-            , url: '/sys/users' //数据接口
+            , url: '/sysFiles/getFiles' //数据接口
             , method: 'POST'
-            , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
-                return {
-                    "code": res.code, //解析接口状态
-                    "msg": res.msg, //解析提示文本
-                    "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
-                    "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
-                }
-            }
             , cols: [
                 [
                     {type: 'checkbox', fixed: 'left'},
-                    {field: 'username', title: '账号', width: 130},
-                    {field: 'phone', title: '手机号', width: 130},
-                    {field: 'deptName', title: '所属公司', width: 120},
-                    {field: 'realName', title: '真实名称', width: 120},
-                    {field: 'nickName', title: '昵称', width: 130},
-                    {field: 'email', title: '邮箱', width: 150},
-                    {
-                        field: 'sex', title: '性别', width: 100, templet: function (item) {
-                            if (item.sex === 1) {
-                                return "男";
-                            }
-                            if (item.sex === 2) {
-                                return "女";
-                            }
-                        }
-                    },
-                    {field: 'createTime', title: '创建时间', minWidth: 120},
-                    {field: 'updateTime', title: '更新时间', minWidth: 120},
-                    {
-                        field: 'status', title: '状态', width: 100, templet: function (item) {
-                            if (item.status === 1) {
-                                return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
-                            }
-                            if (item.status === 2) {
-                                return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
-                            }
-                        }
-                    },
-                    {
-                        field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
-                            if (item.createWhere === 1) {
-                                return "Web";
-                            }
-                            if (item.createWhere === 2) {
-                                return "Android";
-                            }
-                            if (item.createWhere === 3) {
-                                return "NO_ENABLE";
-                            }
-                        }
-                    },
+                    {field: 'name', title: '文件名', width: 200},
+                    {field: 'id', title: '文件ID', width: 130},
+                    {field: 'contentType', title: 'contentType', width: 150},
+                    {field: 'size', title: '文件大小', width: 150},
+                    {field: 'uploadDate', title: '上传时间', width: 150},
+                    {field: 'md5', title: 'md5', width: 170},
                     {width: 300, toolbar: "#tool", title: '操作'}
                 ]
             ]
@@ -425,12 +373,12 @@
             });
         });
 
-        function initLeftTree(){
-            CoreUtil.sendGet("/sys/dept/tree", null, function (res) {
-                loadLeftTree(res.data);
-                loadDeptTree(res.data);
-            });
-        }
+        // function initLeftTree(){
+        //     CoreUtil.sendGet("/sys/dept/tree", null, function (res) {
+        //         loadLeftTree(res.data);
+        //         loadDeptTree(res.data);
+        //     });
+        // }
         var initTransfer = function (data) {
             transfer.render({
                 elem: '#roles'

@@ -4,13 +4,18 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.company.project.common.utils.DataResult;
+import com.company.project.entity.FileDocument;
 import com.company.project.entity.SysFilesEntity;
+import com.company.project.entity.SysUser;
+import com.company.project.service.FileService;
 import com.company.project.service.SysFilesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,6 +36,8 @@ import java.util.List;
 public class SysFilesController {
     @Resource
     private SysFilesService sysFilesService;
+    @Autowired
+    private FileService fileService;
 
     @ApiOperation(value = "新增")
     @PostMapping("/upload")
@@ -58,6 +65,24 @@ public class SysFilesController {
         Page page = new Page(sysFiles.getPage(), sysFiles.getLimit());
         IPage<SysFilesEntity> iPage = sysFilesService.page(page, Wrappers.<SysFilesEntity>lambdaQuery().orderByDesc(SysFilesEntity::getCreateDate));
         return DataResult.success(iPage);
+    }
+
+    @ApiOperation(value = "数据上传",notes = "文件上传，与添加文件不一样!!!")
+    @PostMapping()
+    @RequiresPermissions("sys:data:upload")
+    public DataResult fileUploader(){
+        return new DataResult();
+    }
+
+    @ApiOperation(value = "",notes = "")
+    @PostMapping("/getFiles")
+    //@RequiresRoles("admin")
+    public DataResult getFiles(@RequestBody SysUser sysUser){
+        System.out.println(sysUser + "--> 开始执行查询....");
+        List<FileDocument> fileDocuments = fileService.listFilesByPage(0, 20);
+        System.out.println(" fiels ---> " + fileDocuments);
+
+        return DataResult.success(fileDocuments);
     }
 
 
