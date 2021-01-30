@@ -67,18 +67,18 @@ public class SysFilesController {
         return DataResult.success(iPage);
     }
 
-    @ApiOperation(value = "数据上传",notes = "文件上传，与添加文件不一样!!!")
-    @PostMapping()
+    @ApiOperation(value = "数据文件上传",notes = "文件上传，与添加文件不一样!!!")
+    @PostMapping("/data/upload")
     @RequiresPermissions("sys:data:upload")
     public DataResult fileUploader(){
         return new DataResult();
     }
 
-    @ApiOperation(value = "",notes = "")
-    @PostMapping("/getFiles")
-    //@RequiresRoles("admin")
+    @ApiOperation(value = "文件列表",notes = "文件列表，需要data:list权限")
+    @PostMapping("data/getFiles")
+    @RequiresPermissions("sys:data:list")
     public DataResult getFiles(@RequestBody SysUser sysUser){
-        System.out.println(sysUser + "--> 开始执行查询....");
+        System.out.println("开始执行查询  --> " + sysUser );
         List<FileDocument> fileDocuments = fileService.listFilesByPage(0, 20);
         System.out.println(" fiels ---> " + fileDocuments);
 

@@ -64,33 +64,17 @@
         <!--            </div>-->
         <!--        </div>-->
         <div class="layui-col-sm12 layui-col-md8 layui-col-lg10">
-            <div class="user_table_div">
-                <!--搜索框-->
-                <div id="searchParam" shiro:hasPermission="sys:user:list">
-<!--                    <div class="layui-form-item">-->
-<!--                        <div class="layui-input-inline">-->
-<!--                            <input type="text" id="username" class="layui-input" autocomplete="off" placeholder="请输入账号">-->
-<!--                        </div>-->
-<!--                        <div class="layui-input-inline">    -->
-<!--                            <input type="text" id="nickName" class="layui-input" autocomplete="off" placeholder="请输用户昵称">-->
-<!--                        </div>-->
-<!--                        <div class="layui-input-inline">-->
-<!--                            <input type="text" readonly class="layui-input" id="createTime" placeholder="创建时间">-->
-<!--                        </div>-->
-<!--                        <div class="layui-input-inline layui-form">-->
-<!--                            <select id="status">-->
-<!--                                <option value="">请选择账号状态</option>-->
-<!--                                <option value="1">正常</option>-->
-<!--                                <option value="2">禁用</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                        <div class="layui-input-inline ">-->
-<!--                            <button class="layui-btn" onclick="search()" id="search">查询</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
+            <div id="searchParam"  shiro:hasPermission="sys:data:upload">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline ">
+                        <button type="button" class="layui-btn" id="upload">
+                            <i class="layui-icon">&#xe67c;</i>上传文件
+                        </button>
+                    </div>
                 </div>
-                <!--用户列表-->
+
+            </div>
+                <!-- 文件列表 -->
                 <table class="layui-hide" id="user_table" lay-filter="user_table" ></table>
             </div>
         </div>
@@ -101,15 +85,14 @@
 </body>
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="addNewUser" shiro:hasPermission="sys:user:add">添加</button>
-        <button class="layui-btn layui-btn-sm" lay-event="batchDeleted" shiro:hasPermission="sys:user:deleted">删除
+<!--        <button class="layui-btn layui-btn-sm" lay-event="uploadFile" shiro:hasPermission="sys:data:upload">上传</button>-->
+        <button class="layui-btn layui-btn-sm" lay-event="batchDeleted" shiro:hasPermission="sys:data:delete">删除
         </button>
     </div>
 </script>
 <script type="text/html" id="tool">
-    <a class="layui-btn  layui-btn-xs" lay-event="operationRole" shiro:hasPermission="sys:user:role:update">赋予角色</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit" shiro:hasPermission="sys:user:update">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" shiro:hasPermission="sys:user:deleted">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="download" shiro:hasPermission="sys:data:download">下载</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" shiro:hasPermission="sys:data:delete">删除</a>
 </script>
 <script src="/layui/layui.all.js"></script>
 <script src="/js/core.util.js"></script>
@@ -130,15 +113,16 @@
     var deptNo = null;
     var startTime = null;
     var endTime = null;
-    layui.use(['table', 'layer', 'laydate', 'tree', 'transfer'], function () {
+    var upload = layui.upload;
+    layui.use(['table', 'layer', 'laydate', 'tree', 'transfer','upload'], function () {
         //initLeftTree();
-        //加载table
+        //加载table 列表
         tableIns1 = table.render({
             elem: '#user_table'
             , contentType: 'application/json'
             , headers: {"authorization": token}
             , page: true //开启分页
-            , url: '/sysFiles/getFiles' //数据接口
+            , url: '/sysFiles/data/getFiles' //数据接口
             , method: 'POST'
             , cols: [
                 [
@@ -153,6 +137,19 @@
                 ]
             ]
             , toolbar: '#toolbar'
+        });
+
+        //执行upload操作
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/sysFiles/upload?authorization='+tokenQuery //上传接口
+            ,done: function(res){
+                search();
+                //上传完毕回调
+            }
+            ,error: function(){
+                //请求异常回调
+            }
         });
 
         laydate.render({
@@ -171,6 +168,11 @@
             }
         });
 
+
+        /*
+        *
+        * 列表上方的toolbar
+        * */
         table.on('toolbar(user_table)', function (obj) {
             var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
@@ -178,7 +180,7 @@
                     var checkStatus = table.checkStatus(obj.config.id);
                     var data = checkStatus.data;
                     if (data.length == 0) {
-                        layer.msg("请选择要批量删除的用户");
+                        layer.msg("请选择要批量删除的文件?");
                     } else {
                         var userIds = [];
                         $(data).each(function (index, item) {
@@ -187,8 +189,8 @@
                         tipDialog(userIds, "选中的");
                     }
                     break;
-                case 'addNewUser':
-                    $(".title").html("新增用户");
+                case 'uploadFile':
+                    $(".title").html("上传文件");
                     $(".user_table_div").hide();
                     $("#leftTree").hide();
                     $(".operation_user").show();
@@ -218,11 +220,11 @@
                     userIds.push(data.id);
                     tipDialog(userIds, data.username);
                     break;
-                case 'edit':
+                case 'download':
                     $(".user_table_div").hide();
                     $("#leftTree").hide();
                     $(".operation_user").show();
-                    $(".title").html("编辑用户");
+                    $(".title").html("下载文件");
                     $(".operation_user input[name=id]").val(data.id);
                     $(".operation_user input[name=deptId]").val(data.deptId);
                     $(".operation_user input[name=username]").val(data.username);
@@ -292,7 +294,7 @@
         });
         var tipDialog = function (userIds, username) {
             layer.open({
-                content: '确定要删除' + username + "用户么?",
+                content: '确定要删除' + username + "文件么?",
                 yes: function (index, layero) {
                     layer.close(index); //如果设定了yes回调，需进行手工关闭
                     CoreUtil.sendDelete("/sys/user", userIds, function (res) {
@@ -402,17 +404,12 @@
         //这里以搜索为例
         tableIns1.reload({
             where: { //设定异步数据接口的额外参数，任意设
-                username: $("#username").val(),
-                startTime: startTime,
-                endTime: endTime,
-                nickName: $("#nickName").val(),
-                status: $("#status").val(),
-                deptNo: deptNo
+                key: $("#key").val()
             }
             , page: {
                 curr: 1 //重新从第 1 页开始
             }
         });
-    };
+    }
 </script>
 </html>

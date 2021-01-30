@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * 部门
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 public interface DeptService extends IService<SysDept> {
 

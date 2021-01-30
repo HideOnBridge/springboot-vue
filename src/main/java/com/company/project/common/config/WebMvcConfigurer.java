@@ -20,9 +20,9 @@ import java.util.List;
 /**
  * spring mvc 配置
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 @Configuration
 @EnableConfigurationProperties(FileUploadProperties.class)
