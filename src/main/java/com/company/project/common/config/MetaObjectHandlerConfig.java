@@ -16,9 +16,9 @@ import java.util.HashSet;
 /**
  * mybatis plus 默认值配置
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author mc
+ * @version 1.0
+ * @date 2020.01.25
  */
 @Component
 public class MetaObjectHandlerConfig implements MetaObjectHandler {

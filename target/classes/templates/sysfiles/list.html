@@ -13,7 +13,7 @@
   <div id="searchParam"  shiro:hasPermission="sysFiles:add">
     <div class="layui-form-item">
       <div class="layui-input-inline ">
-        <button type="button" class="layui-btn" id="upload">
+        <button type="button" class="layui-btn" id="upload" >
           <i class="layui-icon">&#xe67c;</i>上传文件
         </button>
       </div>
@@ -21,6 +21,10 @@
 
   </div>
   <table class="layui-table" id="showTable" lay-filter="showTable" ></table>
+  <!--  进度条  -->
+  <div class="layui-progress layui-progress-big" lay-showPercent="true" lay-filter="demo">
+    <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+  </div>
 </div>
 <script type="text/html" id="toolbar">
   <div class="layui-btn-container">
@@ -49,7 +53,8 @@
   var $ = jQuery = layui.jquery;
   var laydate = layui.laydate;
   var upload = layui.upload;
-  layui.use(['table', 'layer', 'laydate', 'upload'], function () {
+  var element = layui.element;
+  layui.use(['table', 'layer', 'laydate', 'upload','element'], function () {
 
     //加载table
     tableIns1 = table.render({
@@ -79,9 +84,14 @@
     });
 
     //执行实例
-    var uploadInst = upload.render({
+    upload.render({
       elem: '#upload' //绑定元素
       ,url: '/sysFiles/upload?authorization='+tokenQuery //上传接口
+      ,accept: 'file'
+      ,xhr : xhrOnProgress
+      ,progress:function (value) {
+        element.progress('demo', value + '%') //设置页面进度条
+      }
       ,done: function(res){
         search();
         //上传完毕回调
@@ -90,6 +100,26 @@
         //请求异常回调
       }
     });
+
+    /*
+      xhrOnProgress
+    * */
+    var xhrOnProgress = function (fun) {
+      xhrOnProgress.onprogress = fun; //绑定监听
+      //使用闭包实现监听绑
+      return function () {
+        //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+        var xhr = $.ajaxSettings.xhr();
+        //判断监听函数是否为函数
+        if (typeof xhrOnProgress.onprogress !== 'function')
+          return xhr;
+        //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+        if (xhrOnProgress.onprogress && xhr.upload) {
+          xhr.upload.onprogress = xhrOnProgress.onprogress;
+        }
+        return xhr;
+      }
+    };
 
 
     //表头工具
@@ -172,5 +202,5 @@
         curr: 1 //重新从第 1 页开始
       }
     });
-  };
+  }
 </script>

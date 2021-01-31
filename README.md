@@ -3,11 +3,11 @@
 ## 介绍
 基于SpringBoot + Thymeleaf + Layui + Apache Shiro + Redis + Mybatis Plus 的后台管理系统  
 支持菜单权限与数据权限    
-数据库支持 MySQL、Oracle、sqlServer 等主流数据库  
+数据库支持 MySQL、Oracl等主流数据库  
 提供代码生成器，基本增删改查无需编写，可快速完成开发任务。  
-后台接口RESTful 风格，支持前后端分离，可与app公用一套接口。  
-开发最精简，可当脚手架，适合你来 DIY  
-**如果喜欢，防止您迷路， 请尽快Star项目。多了您的支持，更多了一份动力！感谢~**
+后台接口RESTful 风格，支持前后端分离
+
+
 
 ## 特征
 - 后台接口RESTful 风格，支持前后端分离，可与app公用一套接口
@@ -19,17 +19,8 @@
 - 集成MyBatis-Plus，实现单表业务零SQL
 - 支持多数据源，自由切换，只需方法或类上用 @DS 切换数据源
 - 集成国人风格的knife4j，自动生成接口文档
-- 提供代码生成器(MySQL、Oracle、sqlServer等主流数据库)，生成从Html到Mapper，爽歪歪  
+- 提供代码生成器(MySQL、Oracle、sqlServer等主流数据库)，生成从Html到Mapper
 
-## 代码仓库
-Gitee地址：[https://gitee.com/zwens/springboot-manager](https://gitee.com/zwens/springboot-manager)   
-GitHub地址：[https://github.com/aitangbao/springboot-manager](https://github.com/aitangbao/springboot-manager)  
-如需更简洁版，请移步:[https://gitee.com/zwens/springboot-manager/tree/simple/](https://gitee.com/zwens/springboot-manager/tree/simple/) 
-
-## 开发文档&项目演示
-- 演示地址：[http://manager.aitangbao.cn](http://121.42.10.80:8080)
-- 账号密码：guest/123456
-- 带宽1m 不太给力 请见谅 :joy:
 
 ## 代码结构
 ```
@@ -84,7 +75,7 @@ GitHub地址：[https://github.com/aitangbao/springboot-manager](https://github.
 - Model内成员变量建议与表字段数量对应，如需扩展成员变量（比如连表查询）建议创建VO，否则需在扩展的成员变量上加@TableField(exist = false)
 - 建议业务失败直接使用throw new BusinessException("ErrorMessage")抛出，由统一异常处理器来封装业务失败的响应结果，会直接被封装为{"code":500002,"message":"ErrorMessage"}返回，尽情抛出；
 - token支持header跟query传参形式，如:
-    - ajax中设置header:```beforeSend: function(request) {request.setRequestHeader("authorization", "有效的token");}```
+    - ajax中设置header:```beforeSend: function(request) {request.setRequestHeader("authorization", "自己的有效token");}```
     - query:```?authorization=有效的token ```
 
 ## 使用说明
@@ -125,25 +116,5 @@ GitHub地址：[https://github.com/aitangbao/springboot-manager](https://github.
 * 模板引擎：[Thymeleaf](https://www.thymeleaf.org/)
 * 阿里巴巴Java开发手册[最新版下载](https://github.com/alibaba/p3c)
 
-## 参与贡献
-1. Fork 本项目
-2. 新建 feature_xxx 分支
-3. 提交代码
-4. 提交 Pull Request
-	
-## **效果图**
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0929/142027_57d18746_997722.png "home1.png")
-![2](https://images.gitee.com/uploads/images/2020/0521/110629_7526055a_997722.png)
-
-### 捐赠
-> 项目的发展离不开您的支持， 如果您够宽裕，请作者喝杯咖啡吧！
-![image-20200506154143271](https://images.gitee.com/uploads/images/2020/0521/110630_6be55411_997722.png)
-
-### 交流群
-> 每周会定期更新，如果二维码过期请先清除浏览器缓存后，重新扫码二维码；如再不行可以私信作者，或邮箱lwb_1128@163.com  
-> github图片可能无法正常显示， 请尝试去[gitee](https://gitee.com/zwens/springboot-manager)查看
-> 加群二维码仅工作日开放， 周末不开放， 如果着急，请使用其他方式联系作者
-
-<img width="300px" height="400px" src="https://images.gitee.com/uploads/images/2021/0125/090520_47f5f476_997722.jpeg" alt="" style="zoom:25%;" /> 
 
 
