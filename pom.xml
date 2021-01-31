@@ -90,10 +90,12 @@
             <version>${shiro.version}</version>
         </dependency>
         <!--lombok-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
         <!--fastJson-->
         <dependency>
             <groupId>com.alibaba</groupId>

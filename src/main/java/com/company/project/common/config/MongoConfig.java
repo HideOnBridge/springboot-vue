@@ -7,7 +7,10 @@ import com.mongodb.client.gridfs.GridFSBuckets;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+/**
+ *
+ * mongodb config
+ */
 @Configuration
 public class MongoConfig {
     //获取配置文件中数据库信息

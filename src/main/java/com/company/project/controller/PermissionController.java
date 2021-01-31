@@ -19,9 +19,9 @@ import javax.validation.Valid;
 /**
  * 菜单权限管理
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author mc
+ * @version
+ * @date
  */
 @RequestMapping("/sys")
 @RestController

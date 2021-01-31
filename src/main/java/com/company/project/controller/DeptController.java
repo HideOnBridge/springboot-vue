@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * 部门管理
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 @RequestMapping("/sys")
 @RestController

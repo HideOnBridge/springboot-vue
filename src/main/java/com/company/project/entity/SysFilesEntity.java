@@ -13,9 +13,9 @@ import java.util.Date;
 /**
  * 文件上传
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * 用户
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

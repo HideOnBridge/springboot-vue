@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * 数据字典 服务类
  *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
+ * @author
+ * @version
+ * @date
  */
 @Service("sysDictService")
 public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDictEntity> implements SysDictService {
