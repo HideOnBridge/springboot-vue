@@ -29,6 +29,8 @@ import java.util.*;
 public class SysFilesServiceImpl extends ServiceImpl<SysFilesMapper, SysFilesEntity> implements SysFilesService {
     @Resource
     private FileUploadProperties fileUploadProperties;
+    @Resource
+    private SysFilesMapper sysFilesMapper;
 
     @Override
     public DataResult saveFile(MultipartFile file) {
@@ -58,7 +60,8 @@ public class SysFilesServiceImpl extends ServiceImpl<SysFilesMapper, SysFilesEnt
             sysFilesEntity.setFileName(fileName);
             sysFilesEntity.setFilePath(newFilePathName);
             sysFilesEntity.setUrl(url);
-            this.save(sysFilesEntity);
+            ///this.save(sysFilesEntity);  #通过源码发现，IService<T> 内部维护了BaseMapper接口，所以也可以直接this.save( T entity) = BaseMapper.insert(T entity)
+            sysFilesMapper.insert(sysFilesEntity);
             Map<String, String> resultMap = new HashMap<>();
             resultMap.put("src", url);
             return DataResult.success(resultMap);

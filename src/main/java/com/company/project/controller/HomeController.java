@@ -5,6 +5,7 @@ import com.company.project.service.HomeService;
 import com.company.project.service.HttpSessionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/sys")
 @Api(tags = "首页数据")
+@Slf4j
 public class HomeController {
     @Resource
     private HomeService homeService;
@@ -35,6 +37,9 @@ public class HomeController {
         String userId = httpSessionService.getCurrentUserId();
         DataResult result = DataResult.success();
         result.setData(homeService.getHomeInfo(userId));
+
+        log.info( "home 首页数据 --->  " +  homeService.getHomeInfo(userId).getMenus());
+
         return result;
     }
 }

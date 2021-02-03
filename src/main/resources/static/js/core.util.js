@@ -5,20 +5,20 @@ var CoreUtil = (function () {
     /*GET*/
     coreUtil.sendGet = function(url, params, ft){
         this.sendAJAX(url, params, ft, "GET")
-    }
+    };
 
     /*POST*/
     coreUtil.sendPost = function(url, params, ft){
         this.sendAJAX(url, JSON.stringify(params), ft, "POST")
-    }
+    };
     /*PUT*/
     coreUtil.sendPut = function(url, params, ft){
         this.sendAJAX(url, JSON.stringify(params), ft, "PUT")
-    }
+    };
     /*DELETE*/
     coreUtil.sendDelete = function(url, params, ft){
         this.sendAJAX(url, JSON.stringify(params), ft, "DELETE")
-    }
+    };
 
 
     /*ajax*/
@@ -60,7 +60,7 @@ var CoreUtil = (function () {
                 }
             }
         })
-    }
+    };
 
 
     /*存入本地缓存*/
@@ -83,7 +83,7 @@ var CoreUtil = (function () {
         }else{
             return false;
         }
-    }
+    };
 
     //字典数据回显
     coreUtil.selectDictLabel = function (datas, value) {
@@ -100,8 +100,9 @@ var CoreUtil = (function () {
             return "未知";
         }
         return label;
-    }
+    };
 
 
     return coreUtil;
-})(CoreUtil, window);
+})
+(CoreUtil, window);

@@ -26,7 +26,7 @@ var initBgColor = function () {
         bgcolorId = config('BgColorDefault');
     }
     var bgcolorData = bgColorConfigFun(bgcolorId);
-    console.log(bgcolorData)
+    console.log(bgcolorData);
     var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
         '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
         '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;}\n' +
@@ -299,7 +299,7 @@ function hide(){
 
     $('.layui-side cite').hide();
     $('.layui-side').animate({width:'55px'});
-    $('.layui-logo').html("SM")
+    $('.layui-logo').html("SJRH")
     $('.layui-logo').animate({width:'55px'});
     $('.layui-body').animate({left:'60px'});
     document.getElementById('hide').className="layui-color layui-icon layui-icon-spread-left";
@@ -311,7 +311,7 @@ function show(){
     $('.layui-side cite').show();
     $('.layui-side').animate({width:'200px'});
     $('.layui-body').animate({left:'200px'});
-    $('.layui-logo').html("Springboot-Manager")
+    $('.layui-logo').html("数据融合平台")
     $('.layui-logo').animate({width:'200px'});
     document.getElementById('hide').className="layui-color layui-icon layui-icon-shrink-right";
     var id = $(".layui-tab-title li.layui-this").attr("lay-id");

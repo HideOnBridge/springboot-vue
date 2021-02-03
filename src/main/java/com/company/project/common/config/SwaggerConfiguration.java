@@ -23,7 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@EnableKnife4j
+@EnableKnife4j  //knife4j 提供注解
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 

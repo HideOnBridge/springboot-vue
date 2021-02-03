@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * 系统日志
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
  * @date 2020年3月18日
  */
