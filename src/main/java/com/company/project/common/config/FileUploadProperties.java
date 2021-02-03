@@ -7,12 +7,12 @@ import org.springframework.util.StringUtils;
 /**
  * 文件上传参数配置类
  *
- * @author wenbin
- * @version V1.0
+ * @author mc
+ * @version V1.1
  * @date 2020年3月18日
  */
 @Component
-@ConfigurationProperties(prefix = "file")
+@ConfigurationProperties(prefix = "file") //将配置文件中的 '对象' 属性注入进来，前缀为file
 public class FileUploadProperties {
 
     private String path;

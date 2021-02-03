@@ -23,3 +23,6 @@ public class UserRoleOperationReqVO {
     @NotEmpty(message = "角色id集合不能为空")
     private List<String> roleIds;
 }
+
+
+

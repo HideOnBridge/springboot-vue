@@ -6,8 +6,8 @@ import com.company.project.entity.SysFilesEntity;
 /**
  * 文件上传 Mapper
  *
- * @author wenbin
- * @version V1.0
+ * @author
+ * @version 1.1
  * @date 2020年3月18日
  */
 public interface SysFilesMapper extends BaseMapper<SysFilesEntity> {

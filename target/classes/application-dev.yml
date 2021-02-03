@@ -8,9 +8,9 @@ spring:
       datasource:
         master:
           username: root
-          password: 123456
+          password: root123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://192.168.1.170:3306/company_project?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2b8
+          url: jdbc:mysql://192.168.1.173:3306/company_project?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2b8
   redis:
     host: 47.93.238.79 # Redis服务器地址
     database: 5 # Redis数据库索引（默认为0）
@@ -32,7 +32,7 @@ spring:
 #      host: 192:168:1:170
 #      port: 27017
 #      grid-fs-database: admin
-      uri: mongodb://admin:admin123456@192.168.1.170:27017/admin
+      uri: mongodb://admin:admin123456@192.168.1.173:27017/admin
 #      uri: mongodb://admin:admin123456@192:168:1:170:27017/admin
 
 file:
@@ -41,3 +41,4 @@ file:
   #path: /data/files/ #linux
   #文件预览、下载的url, 末尾请勿加 /
   url: http://localhost:8080/files
+

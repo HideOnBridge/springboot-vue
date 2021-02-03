@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * RolePermissionOperationReqVO
  *
- * @author wenbin
- * @version V1.0
+ * @author mc
+ * @version 1.0
  * @date 2020年3月18日
  */
 @Data
@@ -23,3 +23,5 @@ public class RolePermissionOperationReqVO {
     @NotEmpty(message = "菜单权限集合不能为空")
     private List<String> permissionIds;
 }
+
+
