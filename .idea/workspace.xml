@@ -1,61 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d4295c3-a997-4fe2-abd1-5c2cbcf46995" name="Default Changelist" comment="version 1.2 test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/vo/page/PageVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/aop/annotation/LogAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/aop/annotation/LogAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/BusinessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/code/BaseResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/code/BaseResponseCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/handler/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/exception/handler/RestExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/job/task/TestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/job/task/TestTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/CustomHashedCredentialsMatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/CustomHashedCredentialsMatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/KaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/KaptchaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysFilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysFilesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/UserRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/UserRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/entity/FileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/FileDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/RedisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/vo/req/UserRoleOperationReqVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/vo/req/UserRoleOperationReqVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dataUpload/data_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dataUpload/data_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/roles/role_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/roles/role_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sysfiles/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sysfiles/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/CompanyProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/CompanyProjectApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/exception/code/BaseResponseCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/exception/code/BaseResponseCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/exception/handler/RestExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/exception/handler/RestExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/CustomHashedCredentialsMatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/CustomHashedCredentialsMatcher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/ShiroConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/KaptchaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/KaptchaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/PermissionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/PermissionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/SysFilesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/SysFilesController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/UserRoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/UserRoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/entity/SysUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/entity/SysUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/roles/role_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/roles/role_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/sysfiles/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/sysfiles/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/users/user_list.html" afterDir="false" />
-    </list>
+    <list default="true" id="0d4295c3-a997-4fe2-abd1-5c2cbcf46995" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,6 +141,7 @@
       <workItem from="1613356639026" duration="3410000" />
       <workItem from="1613382972305" duration="1289000" />
       <workItem from="1613438338909" duration="1098000" />
+      <workItem from="1613610262592" duration="397000" />
     </task>
     <task id="LOCAL-00001" summary="version 1.11111">
       <created>1611885190089</created>
@@ -231,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612319831823</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="version 1.2 test">
+      <created>1613610429889</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1613610429889</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,14 +261,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="412" y="251" width="708" height="277" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1612430760326" />
-    <state x="219" y="0" key="CommitChangelistDialog2" timestamp="1612319830575">
+    <state x="219" y="0" key="CommitChangelistDialog2" timestamp="1613610427730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="219" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1612319830575" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1612319827407">
+    <state x="219" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1613610427730" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1613610401509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1612319827407" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1613610401509" />
     <state x="592" y="220" key="FileChooserDialogImpl" timestamp="1613438366147">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -389,10 +343,10 @@
     </state>
     <state x="360" y="0" width="1139" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1612340268300" />
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611628200412" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1612320815176">
+    <state x="270" y="84" key="Vcs.Push.Dialog.v2" timestamp="1613610484321">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1612320815176" />
+    <state x="270" y="84" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1613610484321" />
     <state x="330" y="212" key="com.intellij.ide.util.TipDialog" timestamp="1613176583216">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -409,10 +363,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="487" y="139" width="617" height="496" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1613384108807" />
-    <state x="424" y="204" key="git4idea.merge.GitPullDialog" timestamp="1611885245809">
+    <state x="424" y="204" key="git4idea.merge.GitPullDialog" timestamp="1613610454786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="424" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1611885245809" />
+    <state x="424" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1613610454786" />
     <state x="425" y="276" key="git4idea.ui.GitUnstashDialog" timestamp="1612319754200">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
