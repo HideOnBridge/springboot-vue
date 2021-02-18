@@ -34,4 +34,6 @@ public interface FileService {
      * @return
      */
     List<FileDocument> listFilesByPage(int pageIndex, int pageSize);
+
+    List<FileDocument> findAll();
 }

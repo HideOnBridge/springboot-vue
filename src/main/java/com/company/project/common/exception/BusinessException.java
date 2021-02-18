@@ -5,11 +5,10 @@ import com.company.project.common.exception.code.ResponseCodeInterface;
 
 /**
  * BusinessException
- *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
- */
+* @author machao
+* @version V1.0
+* @date 2021/2/15
+*/
 public class BusinessException extends RuntimeException {
     /**
      * 异常编号

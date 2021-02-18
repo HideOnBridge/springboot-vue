@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 视图
- *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
- */
+* @author machao
+* @version V1.1
+* @date 2021/2/4
+*/
 @Api(tags = "视图")
 @Controller
 @RequestMapping("/index")
@@ -130,7 +129,7 @@ public class IndexController {
     public String sysFiles() {
         return "sysfiles/list";
     }
-    @GetMapping("/data/upload")
+    @GetMapping("/data")
     public String fileUpload(){
         return "dataUpload/data_list";
     }

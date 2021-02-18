@@ -3,6 +3,7 @@ package com.company.project.service.impl;
 
 import cn.hutool.core.util.IdUtil;
 import com.company.project.entity.FileDocument;
+import com.company.project.mapper.FileRepository;
 import com.company.project.service.FileService;
 import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSDownloadStream;
@@ -37,6 +38,7 @@ public class FileServiceImpl implements FileService {
 
     @Autowired
     private GridFSBucket gridFSBucket;
+
 
 
     @Override
@@ -139,6 +141,15 @@ public class FileServiceImpl implements FileService {
         return files;
 
     }
+
+    @Override
+    public List<FileDocument> findAll() {
+        Query query = new Query().with(Sort.by(Sort.Direction.DESC, "uploadDate"));
+        List<FileDocument> files = mongoTemplate.find(query , FileDocument.class );
+
+        return files;
+    }
+
 
     private byte[] getBytes(InputStream inputStream) throws Exception{
         ByteArrayOutputStream bos = new ByteArrayOutputStream();

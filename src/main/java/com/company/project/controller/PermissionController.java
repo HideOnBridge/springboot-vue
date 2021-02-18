@@ -8,6 +8,7 @@ import com.company.project.entity.SysPermission;
 import com.company.project.service.PermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.util.StringUtils;
@@ -26,6 +27,7 @@ import javax.validation.Valid;
 @RequestMapping("/sys")
 @RestController
 @Api(tags = "组织模块-菜单权限管理")
+@Slf4j
 public class PermissionController {
 
     @Resource
@@ -56,6 +58,7 @@ public class PermissionController {
     @LogAnnotation(title = "菜单权限管理", action = "更新菜单权限")
     @RequiresPermissions("sys:permission:update")
     public DataResult updatePermission(@RequestBody @Valid SysPermission vo) {
+        log.info("更改菜单权限-----> ");
         if (StringUtils.isEmpty(vo.getId())) {
             return DataResult.fail("id不能为空");
         }

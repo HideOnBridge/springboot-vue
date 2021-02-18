@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.company.project.common.exception.code.BaseResponseCode.ADMINPERMISSION;
+
 /**
  * 用户管理
  *
@@ -115,6 +117,7 @@ public class UserController {
     @RequiresPermissions("sys:user:list")
     @LogAnnotation(title = "用户管理", action = "分页获取用户列表")
     public DataResult pageInfo(@RequestBody SysUser vo) {
+        log.info("用户分页info -----> " + vo.toString());
         return DataResult.success(userService.pageInfo(vo));
     }
 
@@ -155,6 +158,10 @@ public class UserController {
     @LogAnnotation(title = "用户管理", action = "删除用户")
     @RequiresPermissions("sys:user:deleted")
     public DataResult deletedUser(@RequestBody @ApiParam(value = "用户id集合") List<String> userIds) {
+        //超级管理员不可被删除
+        if(userIds.contains("1")){
+            return DataResult.getResult(BaseResponseCode.ADMINPERMISSION);
+        }
         //删除用户， 删除redis的绑定的角色跟权限
         httpSessionService.abortUserByUserIds(userIds);
         LambdaQueryWrapper<SysUser> queryWrapper = Wrappers.lambdaQuery();

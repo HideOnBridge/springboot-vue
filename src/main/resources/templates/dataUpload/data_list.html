@@ -7,63 +7,15 @@
     <link rel="stylesheet" href="/css/custom.form.css">
 </head>
 <body>
-<div class="panel panel-default operation_user" hidden>
-    <div class="panel-heading title"></div>
-    <div class="layui-card-body">
-        <form class="layui-form " action="" lay-filter="deptInfo" style="width: 700px;margin-top: 10px">
-            <input name="id" hidden/>
-            <input name="deptId" hidden/>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">账号</label>
-                <div class="layui-input-block">
-                    <input type="username" name="username" placeholder="请输入账号" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-form-label ">密码</div>
-                <div class="layui-input-block">
-                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-form-label ">手机号</div>
-                <div class="layui-input-block">
-                    <input type="phone" name="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-form-label ">所属部门</div>
-                <div class="layui-input-block">
-                    <input type="deptName" name="deptName" placeholder="请选择所属部门" autocomplete="off" class="layui-input"
-                           readonly="readonly" style="background:#eeeeee!important">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">状态</label>
-                <div class="layui-input-block">
-                    <input type="checkbox" name="status" lay-skin="switch" lay-filter="switch" lay-text="启用|禁用" checked>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">保存</button>
-                    <button class="layui-btn layui-btn-primary" id="btn_cancel">返回</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 <div class="layui-fluid">
-    <div class="layui-row layui-col-space15">
+    <div class="layui-row layui-col-space15" >
         <!--        <div class="layui-col-sm12 layui-col-md4 layui-col-lg2">-->
         <!--            <div class="layui-card">-->
         <!--                <div class="layui-card-body mini-bar" id="leftTree">-->
         <!--                </div>-->
         <!--            </div>-->
         <!--        </div>-->
-        <div class="layui-col-sm12 layui-col-md8 layui-col-lg10">
+        <div class="layui-col-sm12 layui-col-md8 layui-col-lg12">
             <div id="searchParam"  shiro:hasPermission="sys:data:upload">
                 <div class="layui-form-item">
                     <div class="layui-input-inline ">
@@ -75,8 +27,11 @@
 
             </div>
                 <!-- 文件列表 -->
-                <table class="layui-hide" id="user_table" lay-filter="user_table" ></table>
+                <table class="layui-hide" id="user_table" lay-filter="user_table" shiro:hasPermission="sys:data:list" ></table>
+            <div class="layui-progress layui-progress-big" lay-showPercent="true" lay-filter="demon">
+                <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -124,6 +79,14 @@
             , page: true //开启分页
             , url: '/sysFiles/data/getFiles' //数据接口
             , method: 'POST'
+            ,parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                    "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                }
+            }
             , cols: [
                 [
                     {type: 'checkbox', fixed: 'left'},
@@ -142,7 +105,12 @@
         //执行upload操作
         var uploadInst = upload.render({
             elem: '#upload' //绑定元素
-            ,url: '/sysFiles/upload?authorization='+tokenQuery //上传接口
+            ,url: '/data/upload?authorization='+tokenQuery //上传接口
+            ,accept: 'file'
+            ,xhr : xhrOnProgress
+            ,progress:function (value) {
+                element.progress('demon', value + '%') //设置页面进度条
+            }
             ,done: function(res){
                 search();
                 //上传完毕回调
@@ -151,6 +119,27 @@
                 //请求异常回调
             }
         });
+
+        /*
+      xhrOnProgress
+      添加动态进度条
+    * */
+        var xhrOnProgress = function (fun) {
+            xhrOnProgress.onprogress = fun; //绑定监听
+            //使用闭包实现监听绑
+            return function () {
+                //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+                var xhr = $.ajaxSettings.xhr();
+                //判断监听函数是否为函数
+                if (typeof xhrOnProgress.onprogress !== 'function')
+                    return xhr;
+                //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+                if (xhrOnProgress.onprogress && xhr.upload) {
+                    xhr.upload.onprogress = xhrOnProgress.onprogress;
+                }
+                return xhr;
+            }
+        };
 
         laydate.render({
             elem: '#createTime'

@@ -93,11 +93,15 @@
         element.progress('demo', value + '%') //设置页面进度条
       }
       ,done: function(res){
+        layer.msg(res.msg);
         search();
         //上传完毕回调
       }
-      ,error: function(){
-        //请求异常回调
+      ,error: function(res){
+        layer.error(res.msg);
+      }
+      ,end:function () {
+
       }
     });
 

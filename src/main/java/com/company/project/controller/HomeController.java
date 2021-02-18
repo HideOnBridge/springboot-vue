@@ -37,8 +37,7 @@ public class HomeController {
         String userId = httpSessionService.getCurrentUserId();
         DataResult result = DataResult.success();
         result.setData(homeService.getHomeInfo(userId));
-
-        log.info( "home 首页数据 --->  " +  homeService.getHomeInfo(userId).getMenus());
+        log.info( "home 首页数据 --->  " +  homeService.getHomeInfo(userId));
 
         return result;
     }

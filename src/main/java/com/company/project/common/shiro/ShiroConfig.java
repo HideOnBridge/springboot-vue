@@ -69,7 +69,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
         //用来校验token
-        filtersMap.put("token", new CustomAccessControlFilter());
+        filtersMap.put("user_token", new CustomAccessControlFilter()); // ***只有符合user_token,才会触发自定义的过滤器
         shiroFilterFactoryBean.setFilters(filtersMap);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 配置不会被拦截的链接 顺序判断
@@ -97,7 +97,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/layui/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/layui-ext/**", "anon");
-        filterChainDefinitionMap.put("/**", "token,authc");
+        filterChainDefinitionMap.put("/**", "user_token,authc");   //与过滤器map的key绑定
         shiroFilterFactoryBean.setLoginUrl("/index/login");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

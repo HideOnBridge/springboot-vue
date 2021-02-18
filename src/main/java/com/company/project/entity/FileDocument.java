@@ -4,10 +4,12 @@ package com.company.project.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Document
 public class FileDocument {
+
     @Id  // 主键
     private String id;
     private String name;        // 文件名称

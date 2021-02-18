@@ -39,13 +39,13 @@
                     <input type="phone" name="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <div class="layui-form-label ">所属部门</div>
-                <div class="layui-input-block">
-                    <input type="deptName" name="deptName" placeholder="请选择所属部门" autocomplete="off" class="layui-input"
-                           readonly="readonly" style="background:#eeeeee!important">
-                </div>
-            </div>
+<!--            <div class="layui-form-item">-->
+<!--                <div class="layui-form-label ">所属部门</div>-->
+<!--                <div class="layui-input-block">-->
+<!--                    <input type="deptName" name="deptName" placeholder="请选择所属部门" autocomplete="off" class="layui-input"-->
+<!--                           readonly="readonly" style="background:#eeeeee!important">-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="layui-form-item">
                 <label class="layui-form-label">状态</label>
                 <div class="layui-input-block">
@@ -71,7 +71,7 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-        <div class="layui-col-sm12 layui-col-md8 layui-col-lg10">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
             <div class="user_table_div">
                 <div id="searchParam" shiro:hasPermission="sys:user:list">
                     <div class="layui-form-item">
@@ -115,7 +115,7 @@
     </div>
 </script>
 <script type="text/html" id="tool">
-    <a class="layui-btn  layui-btn-xs" lay-event="operationRole" shiro:hasPermission="sys:user:role:update">赋予角色</a>
+    <a class="layui-btn  layui-btn-xs" lay-event="operationRole" >赋予角色</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit" shiro:hasPermission="sys:user:update">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" shiro:hasPermission="sys:user:deleted">删除</a>
 </script>
@@ -356,7 +356,6 @@
         };
         form.on('switch(switch)', function () {
             $(".operation_user input[name=status]").attr('type', 'hidden').val(this.checked ? 1 : 2);
-
         });
         form.on('submit(submit)', function (data) {
             if (data.field.id === undefined || data.field.id === null || data.field.id === "") {

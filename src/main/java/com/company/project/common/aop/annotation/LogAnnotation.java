@@ -3,12 +3,10 @@ package com.company.project.common.aop.annotation;
 import java.lang.annotation.*;
 
 /**
- * LogAnnotation
- *
- * @author mc
- * @version V1.0
- * @date 2020年3月18日
- */
+* @author machao
+* @version V1.1
+* @date 2021/2/4
+*/
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

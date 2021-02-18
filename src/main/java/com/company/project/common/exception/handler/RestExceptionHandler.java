@@ -5,6 +5,7 @@ import com.company.project.common.exception.code.BaseResponseCode;
 import com.company.project.common.utils.DataResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -62,6 +63,17 @@ public class RestExceptionHandler {
         log.error("methodArgumentNotValidExceptionHandler bindingResult.allErrors():{},exception:{}", e.getBindingResult().getAllErrors(), e);
         List<ObjectError> errors = e.getBindingResult().getAllErrors();
         return DataResult.getResult(BaseResponseCode.METHODARGUMENTNOTVALIDEXCEPTION.getCode(), errors.get(0).getDefaultMessage());
+    }
+
+    /**
+     * 处理操作无权限异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(UnauthorizedException.class)
+    DataResult UnauthorizedExceptionHandler(UnauthorizedException e) {
+        log.error("------>  操作权限不够!!!!" + e);
+        return DataResult.getResult(BaseResponseCode.UNAUTHORIZED_ERROR);
     }
 
     /**

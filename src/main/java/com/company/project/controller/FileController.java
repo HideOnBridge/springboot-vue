@@ -2,6 +2,7 @@ package com.company.project.controller;
 
 import cn.hutool.core.util.StrUtil;
 
+import com.company.project.common.utils.DataResult;
 import com.company.project.entity.FileDocument;
 import com.company.project.service.FileService;
 import com.company.project.utils.MD5Util;
@@ -24,6 +25,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * 数据文件上传
+* @author machao
+* @version V1.0
+* @date 2021/2/3
+*/
 @Controller
 public class FileController {
     @Autowired
@@ -103,11 +111,10 @@ public class FileController {
     /**
      * 上传
      */
-    @PostMapping("/upload")
-    @RequiresPermissions("upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    @PostMapping("/data/upload")
+    @RequiresPermissions(value ="sys:data:upload")
+    public DataResult handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException, NoSuchAlgorithmException {
 
-        try {
             FileDocument fileDocument = new FileDocument();
             fileDocument.setName(file.getOriginalFilename());
             fileDocument.setSize(file.getSize());
@@ -119,20 +126,9 @@ public class FileController {
             //将文件存入gridFs
             String gridfsId = fileService.uploadFileToGridFS(file.getInputStream() , file.getContentType());
             fileDocument.setGridfsId(gridfsId);
-            fileDocument.setContent(new String(file.getBytes(),"UTF-8"));
-            System.out.println(" 文件内容: " + new String(file.getBytes(),"UTF-8"));
+            //fileDocument.setContent(new String(file.getBytes(),"UTF-8"));
             fileDocument = fileService.saveFile(fileDocument);
-            System.out.println(fileDocument);
-        } catch (IOException | NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
-            redirectAttributes.addFlashAttribute("message", "Your " + file.getOriginalFilename() + " is wrong!");
-            return "redirect:/indexList";
-        }
-
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/indexList";
+            return DataResult.success();
     }
 
 //    /**

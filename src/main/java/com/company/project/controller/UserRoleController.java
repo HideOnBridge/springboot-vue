@@ -16,11 +16,10 @@ import javax.validation.Valid;
 
 /**
  * 用户和角色关联
- *
- * @author wenbin
- * @version V1.0
- * @date 2020年3月18日
- */
+* @author machao
+* @version V1.0
+* @date 2021/2/4
+*/
 @RequestMapping("/sys")
 @RestController
 @Api(tags = "组织管理-用户和角色关联接口")

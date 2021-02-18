@@ -12,14 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 /**
- * 验证码相关
- *
- * @author mc
- * @version
- * @date 2020年3月18日
- */
+* @author machao
+* @version V1.0
+* @date 2021/2/4
+*/
 @Api(tags = "验证码相关")
 @RestController
 @Slf4j

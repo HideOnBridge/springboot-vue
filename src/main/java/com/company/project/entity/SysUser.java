@@ -24,12 +24,12 @@ public class SysUser extends BaseEntity implements Serializable {
     @TableId
     private String id;
 
-    @NotBlank(message = "账号不能为空")
+    @NotBlank(message = "username not null")
     private String username;
 
     private String salt;
 
-    @NotBlank(message = "密码不能为空")
+    @NotBlank(message = "password not null")
     private String password;
 
     @TableField(exist = false)
@@ -86,3 +86,4 @@ public class SysUser extends BaseEntity implements Serializable {
     @TableField(exist = false)
     private String Captcha;
 }
+
