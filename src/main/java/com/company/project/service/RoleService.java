@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * 角色
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2020年01月18日
  */
 public interface RoleService extends IService<SysRole> {
 

@@ -5,6 +5,12 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * md5工具类
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/01
+ */
 public class MD5Util {
     /**
      * 获取该输入流的MD5值

@@ -30,7 +30,7 @@ import java.util.List;
  *
  * @author
  * @version V1.0
- * @date 2020年3月18日
+ * @date
  */
 @RestController
 @RequestMapping("/sysFiles")
@@ -43,7 +43,7 @@ public class SysFilesController {
 
     @ApiOperation(value = "新增")
     @PostMapping("/upload")
-    @RequiresPermissions(value = "sysFiles:add_test")
+    @RequiresPermissions(value = "sysFiles:add")
     public DataResult add(@RequestParam(value = "file") MultipartFile file) {
         //判断文件是否空
         if (file == null || file.getOriginalFilename() == null || "".equalsIgnoreCase(file.getOriginalFilename().trim())) {

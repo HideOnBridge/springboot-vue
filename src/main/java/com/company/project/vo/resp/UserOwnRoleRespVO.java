@@ -8,10 +8,9 @@ import java.util.List;
 
 /**
  * UserOwnRoleRespVO
- *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021/2/18
  */
 @Data
 public class UserOwnRoleRespVO {

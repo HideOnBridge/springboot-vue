@@ -25,9 +25,9 @@ import java.nio.charset.StandardCharsets;
 /**
  * 自定义过滤器
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2020年12月18日
  */
 @Slf4j
 public class CustomAccessControlFilter extends AccessControlFilter {

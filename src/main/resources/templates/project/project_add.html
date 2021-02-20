@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/custom.form.css">
+    <style>
+        .custom-tree-item-clicked
+        {
+            color:#FC9003
+        }
+    </style>
+</head>
+<body>
+<div class="panel-heading title"></div>
+<div class="layui-card-body">
+    <form class="layui-form " action="" lay-filter="deptInfo" style="width: 700px;margin-top: 10px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">项目名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="projectName" placeholder="请输入项目名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-label ">项目编号</div>
+            <div class="layui-input-block">
+                <input type="text" name="projectID" placeholder="请输入项目编号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+<!--        <div class="layui-form-item">-->
+<!--            <div class="layui-form-label ">项目</div>-->
+<!--            <div class="layui-input-block">-->
+<!--                <input type="phone" name="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    var form = layui.form;
+    /**/
+    form.on('submit(submit)', function (data) {
+        if (data.field.id === undefined || data.field.id === null || data.field.id === "") {
+            CoreUtil.sendPost("/", data.field, function (res) {
+
+            });
+        } else {
+            CoreUtil.sendPut("/sys/user", data.field, function (res) {
+
+            });
+        }
+        return false;
+    });
+
+
+
+</script>
+</html>

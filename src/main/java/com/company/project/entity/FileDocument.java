@@ -21,13 +21,20 @@ public class FileDocument {
     private String suffix;      // 文件后缀名
     private String description; // 文件描述
     private String gridfsId;    // 大文件管理GridFS的ID
+    private String pro_name;    // 项目名称
 
+
+    public String getPro_name() {
+        return pro_name;
+    }
+
+    public void setPro_name(String pro_name) {
+        this.pro_name = pro_name;
+    }
 
     public void setContent(String content) {
         this.content = content;
     }
-
-
 
     public String getId() {
         return id;

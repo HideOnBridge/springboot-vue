@@ -10,9 +10,9 @@ import java.util.Set;
 /**
  * 菜单权限
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2020年12月18日
  */
 public interface PermissionService extends IService<SysPermission> {
 

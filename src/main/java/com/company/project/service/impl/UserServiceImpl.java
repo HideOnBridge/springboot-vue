@@ -26,6 +26,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
+import static java.awt.SystemColor.info;
+
 /**
  * 用户 服务类
  *
@@ -96,9 +98,10 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
                 sysUser.setDeptNo(sysDept.getDeptNo());
             }
         }
+        log.info("该用户登录时的角色名称 ---->  " + roleService.getRoleNames(sysUser.getId()));
         String token = httpSessionService.createTokenAndUser(sysUser, roleService.getRoleNames(sysUser.getId()), permissionService.getPermissionsByUserId(sysUser.getId()));
         respVO.setAccessToken(token);
-        log.info("userRespVo -----> " + respVO);
+        log.info("LoginRespVO -----> " + respVO);
 
         return respVO;
     }

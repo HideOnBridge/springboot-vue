@@ -16,11 +16,9 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * 部门管理
- *
- * @author
- * @version
- * @date
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/18
  */
 @RequestMapping("/sys")
 @RestController

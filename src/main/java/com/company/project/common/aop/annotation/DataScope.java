@@ -4,10 +4,9 @@ import java.lang.annotation.*;
 
 /**
  * LogAnnotation
- *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021/2/18
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,9 +1,10 @@
 package com.company.project.vo;
 
 /**
- * @param
- * @date 2021/1/11
- * @return
+ * ResponseModel
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/18
  */
 public class ResponseModel {
     public static final String Success = "success";

@@ -15,7 +15,7 @@
         <!--                </div>-->
         <!--            </div>-->
         <!--        </div>-->
-        <div class="layui-col-sm12 layui-col-md8 layui-col-lg12">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
             <div id="searchParam"  shiro:hasPermission="sys:data:upload">
                 <div class="layui-form-item">
                     <div class="layui-input-inline ">
@@ -91,11 +91,11 @@
                 [
                     {type: 'checkbox', fixed: 'left'},
                     {field: 'name', title: '文件名', width: 200},
-                    {field: 'id', title: '文件ID', width: 130},
-                    {field: 'contentType', title: 'contentType', width: 150},
+                    {field: 'id', title: '文件ID', width: 200},
+                    {field: 'contentType', title: 'contentType', width:200},
                     {field: 'size', title: '文件大小', width: 150},
-                    {field: 'uploadDate', title: '上传时间', width: 150},
-                    {field: 'md5', title: 'md5', width: 170},
+                    {field: 'uploadDate', title: '上传时间', width: 200},
+                    {field: 'md5', title: 'md5', width: 200},
                     {width: 300, toolbar: "#tool", title: '操作'}
                 ]
             ]
@@ -105,8 +105,10 @@
         //执行upload操作
         var uploadInst = upload.render({
             elem: '#upload' //绑定元素
-            ,url: '/data/upload?authorization='+tokenQuery //上传接口
+            ,url: '/data/upload' //上传接口
             ,accept: 'file'
+            ,headers: {"authorization": token}
+            ,method: 'POST'
             ,xhr : xhrOnProgress
             ,progress:function (value) {
                 element.progress('demon', value + '%') //设置页面进度条

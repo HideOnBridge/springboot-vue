@@ -131,6 +131,7 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public List<FileDocument> listFilesByPage(int pageIndex, int pageSize) {
+        //Query query = new Query().with(Sort.by(Sort.Direction.DESC, "uploadDate")).addCriteria(Criteria.where("pro_name").is("selectData"));
         Query query = new Query().with(Sort.by(Sort.Direction.DESC, "uploadDate"));
         long skip = (pageIndex -1) * pageSize;
         query.skip(skip);

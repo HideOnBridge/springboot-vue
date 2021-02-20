@@ -27,9 +27,9 @@ import java.util.Collection;
 /**
  * 授权
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date
  */
 @Slf4j
 public class CustomRealm extends AuthorizingRealm {

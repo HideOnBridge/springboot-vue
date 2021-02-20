@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 /**
  * 首页
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
  * @date 2020年3月18日
  */

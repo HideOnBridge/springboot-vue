@@ -11,10 +11,9 @@ import java.util.Date;
 
 /**
  * 角色部门
- *
- * @author wenbin
- * @email *****@mail.com
- * @date 2020-09-27 17:30:15
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/18
  */
 @Data
 @TableName("sys_role_dept")

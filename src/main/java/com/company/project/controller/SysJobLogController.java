@@ -20,9 +20,9 @@ import javax.annotation.Resource;
 /**
  * 定时任务日志
  *
- * @author wenbin
+ * @author
  * @version V1.0
- * @date 2020年3月18日
+ * @date
  */
 @Api(tags = "定时任务日志")
 @RestController

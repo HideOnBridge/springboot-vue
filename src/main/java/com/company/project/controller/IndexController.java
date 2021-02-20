@@ -133,4 +133,17 @@ public class IndexController {
     public String fileUpload(){
         return "dataUpload/data_list";
     }
+    @GetMapping("/project")
+    public String sysProject(){
+        return "project/project_list";
+    }
+    @GetMapping("/project/add")
+    public String sysProjectAdd(){
+        return "project/project_add";
+    }
+    @GetMapping("/dataBox")
+    public String sysData(){
+        return "dataBox/box_home";
+
+    }
 }

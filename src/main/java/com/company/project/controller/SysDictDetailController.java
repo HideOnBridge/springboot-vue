@@ -21,9 +21,9 @@ import java.util.List;
 /**
  * 字典明细管理
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date
  */
 @Api(tags = "字典明细管理")
 @RestController

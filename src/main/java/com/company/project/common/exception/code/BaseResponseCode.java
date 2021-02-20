@@ -3,10 +3,9 @@ package com.company.project.common.exception.code;
 
 /**
  * 错误码
- *
- * @author
- * @version
- * @date
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/18
  */
 public enum BaseResponseCode implements ResponseCodeInterface {
     /**

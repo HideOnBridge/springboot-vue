@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * 用户
  *
- * @author
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021/01/10
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

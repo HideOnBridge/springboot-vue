@@ -6,9 +6,9 @@ import java.util.UUID;
 /**
  * 密码工具类
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2020年12月18日
  */
 public class PasswordUtils {
 

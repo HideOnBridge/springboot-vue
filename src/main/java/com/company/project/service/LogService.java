@@ -5,10 +5,9 @@ import com.company.project.entity.SysLog;
 
 /**
  * 系统日志
- *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021/2/18
  */
 public interface LogService extends IService<SysLog> {
 }

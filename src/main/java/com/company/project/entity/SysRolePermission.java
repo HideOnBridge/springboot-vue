@@ -11,9 +11,9 @@ import java.util.Date;
 /**
  * 角色权限
  *
- * @author wenbin
+ * @author
  * @version V1.0
- * @date 2020年3月18日
+ * @date
  */
 @Data
 public class SysRolePermission implements Serializable {

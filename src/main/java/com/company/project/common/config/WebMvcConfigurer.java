@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author mc
  * @version 1.0
- * @date 2020-12-06
+ * @date 2020/12/06
  */
 @Configuration
 @EnableConfigurationProperties(FileUploadProperties.class)
@@ -92,12 +92,12 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
     }
 
 
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry){
-//        System.out.println(" 404 -----> ");
-//        registry.addViewController("/404").setViewName("error/404.html");
-//
-//    }
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry){
+        System.out.println(" 404 -----> ");
+        registry.addViewController("/404").setViewName("error/404.html");
+
+    }
 
 
 

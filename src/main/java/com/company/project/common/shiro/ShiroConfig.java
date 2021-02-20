@@ -18,8 +18,8 @@ import java.util.Map;
 /**
  * ShiroConfig
  *
- * @author
- * @version
+ * @author mc
+ * @version V1.2
  * @date
  */
 @Configuration

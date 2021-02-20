@@ -20,9 +20,9 @@ import java.util.*;
 /**
  * 文件上传 服务类
  *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021年01月18日
  */
 @EnableConfigurationProperties(FileUploadProperties.class)
 @Service("sysFilesService")

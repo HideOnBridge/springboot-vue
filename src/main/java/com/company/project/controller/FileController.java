@@ -7,6 +7,7 @@ import com.company.project.entity.FileDocument;
 import com.company.project.service.FileService;
 import com.company.project.utils.MD5Util;
 import com.company.project.vo.ResponseModel;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,10 +30,11 @@ import java.util.Optional;
 /**
  * 数据文件上传
 * @author machao
-* @version V1.0
+* @version V1.2
 * @date 2021/2/3
 */
 @Controller
+@Slf4j
 public class FileController {
     @Autowired
     private FileService fileService;
@@ -112,6 +114,7 @@ public class FileController {
      * 上传
      */
     @PostMapping("/data/upload")
+    @ResponseBody
     @RequiresPermissions(value ="sys:data:upload")
     public DataResult handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException, NoSuchAlgorithmException {
 
@@ -121,8 +124,11 @@ public class FileController {
             fileDocument.setContentType(file.getContentType());
             fileDocument.setUploadDate(new Date());
             String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            String prefix = file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf("."));
+            log.info("文件---- > " + prefix);
             fileDocument.setSuffix(suffix);
             fileDocument.setMd5(MD5Util.getMD5(file.getInputStream()));
+            fileDocument.setPro_name(prefix);
             //将文件存入gridFs
             String gridfsId = fileService.uploadFileToGridFS(file.getInputStream() , file.getContentType());
             fileDocument.setGridfsId(gridfsId);

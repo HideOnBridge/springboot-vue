@@ -2,10 +2,9 @@ package com.company.project.common.exception.code;
 
 /**
  * ResponseCodeInterface
- *
- * @author
- * @version
- * @date
+ * @author mc
+ * @version V1.0
+ * @date 2021/2/18
  */
 public interface ResponseCodeInterface {
     /**

@@ -80,7 +80,9 @@
         <!-- 内容主体区域 -->
         <div class="layui-tab" lay-filter="tab" lay-allowclose="true">
             <ul class="layui-tab-title" style="width: 90%">
-                <li class="first-tab layui-this"><i class="layui-icon layui-icon-home"></i> <span>主页</span></li>
+                <li class="first-tab layui-this">
+                    <i class="layui-icon layui-icon-home"></i>
+                    <span>主页</span></li>
             </ul>
             <ul class="layui-nav closeBox">
                 <li class="layui-nav-item">
@@ -147,12 +149,17 @@
                 if (data != null && data.length > 0) {
 
                     $.each(data, function (index, item) {
-                        if (index == 0) {
-                            ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
-                        } else {
+                        // if (index == 0) {
+                        //     ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
+                        // } else {
                             ulHtml += '<li class="layui-nav-item">';
+                        //}
+                        if(item.children.length == 0 ){
+                            ulHtml += '<a href="javascript:;' + item.url + '" data-url="' + item.url + '" data-title="' + item.title + '" data-id="' + item.id +'"class="menuNvaBar" >';
+                        }else {
+                            ulHtml += '<a href="javascript:;">';
                         }
-                        ulHtml += '<a href="javascript:;">';
+
                         if (!CoreUtil.isEmpty(item.icon)) {
                             ulHtml += '<i class="layui-icon '+item.icon+'"></i>';
                         }
@@ -178,11 +185,9 @@
                                     }
                                     ulHtml += '<cite> ' + child.title + '</cite></a></dd>';
                                 }
-
                                 if (child.children != null && child.children.length > 0 && child.type == 1) {
                                     ulHtml += '</dd>';
                                 }
-
                             });
                             ulHtml += "</dl>"
                         }
