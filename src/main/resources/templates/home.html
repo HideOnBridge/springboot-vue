@@ -2,8 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>后台管理系统</title>
+    <title>数据融合</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
+    <link href="/images/favicon1.ico" rel="icon" type="image/x-icon"/>
+    <link href="/images/favicon1.ico" rel="shortcut icon" type="image/x-icon"/>
+    <!--引入自定义图标-->
+    <link rel="stylesheet" href="/layui/css/modules/icon/iconfont.css">
     <style>
         .layui-tab-title .layui-this{
             background-color:#009688;color:#eee;
@@ -33,7 +37,10 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">SJRH</div>
+        <div class="layui-logo">
+            <i class="layui-icon iconfont icon-shoucang"></i>
+            SJRH
+        </div>
 
         <a>
             <div class="layuimini-tool-left"  onclick="iconHide()">
@@ -69,7 +76,7 @@
         </ul>
     </div>
     <!-- 左侧菜单-->
-    <div id="mainmenu" class="layui-side layui-bg-black">
+    <div id="mainmenu" class="layui-side layui-bg-cyan">
         <div class="layui-side-scroll">
             <div class="navBar layui-side-scroll" id="navBarId">
 
@@ -108,11 +115,29 @@
 <script src="/js/jquery.js"></script>
 <script src="/js/home.js?v=0.1"></script>
 <script>
+    var token = CoreUtil.getData("access_token");
+    var userName = token.split("#")[1];
     var layer = layui.layer;
     var $ = jQuery = layui.jquery;
     var form = layui.form;
     var element = layui.element;
+
     initBgColor();
+    layui.use('element',function () {
+        var el = layui.element;
+        el.on('nav(demo)',function (elem) {
+            var data_id = elem.attr('data-id');  //获取item 的data-id 属性值
+            if(data_id != null && data_id.length == 19){   //筛选data-id 避免无数次请求
+                CoreUtil.sendPost('/sys/project/clickFile/redis',userName + "#" + data_id, function (res) {
+                    layer.msg('设置成功了~')
+                    window.sessionStorage.setItem("pid",data_id);
+                })
+            }else{
+                console.log("没有data-id")
+
+            }
+        })
+    })
     $(function () {
         FrameWH();
         //递归获取导航栏无线层级
@@ -145,7 +170,7 @@
             $("#nickName").html(res.data.userInfo.username);
             var data = res.data.menus;
             if (data != "" && data.length > 0) {
-                var ulHtml = '<ul class="layui-nav layui-nav-tree layui-left-nav" onclick="ulHide()">';
+                var ulHtml = '<ul class="layui-nav layui-nav-tree layui-left-nav" lay-filter="demo" onclick="ulHide()">';
                 if (data != null && data.length > 0) {
                     $.each(data, function (index, item) {
                         // if (index == 0) {

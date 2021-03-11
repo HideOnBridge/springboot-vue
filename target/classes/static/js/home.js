@@ -157,8 +157,8 @@ var buildBgColorHtml = function () {
  function bgColorConfigFun(bgcolorId) {
     var bgColorConfig = [
         {
-            headerRight: '#1aa094',
-            headerRightThis: '#197971',
+            headerRight: '#E7E7E7',
+            headerRightThis: '#E7E7E7',
             headerLogo: '#243346',
             menuLeft: '#2f4056',
             menuLeftThis: '#1aa094',
@@ -246,12 +246,12 @@ var buildBgColorHtml = function () {
             menuLeftHover: '#3b3f4b',
         },
         {
-            headerRight: '#963885',
-            headerRightThis: '#772c6a',
-            headerLogo: '#772c6a',
-            menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
-            menuLeftHover: '#3b3f4b',
+            headerRight: '#E7E7E7',
+            headerRightThis: '#E7E7E7',
+            headerLogo: '#E7E7E7',
+            menuLeft: '#E7E7E7',
+            menuLeftThis: '#E7E7E7',
+            menuLeftHover: '#E7E7E7',
         }
     ];
 

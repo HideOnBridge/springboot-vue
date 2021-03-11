@@ -1,0 +1,30 @@
+.search{
+    width: 100%;
+    height: auto;
+    /*background-color: #cccccc;*/
+    margin: 0;
+    top: 0;
+    padding: 0;
+}
+.layui-btn-group button{
+    border-radius: 4px !important;
+}
+.layui-btn-group{
+    float: left;
+    /*background-color: #1E9FFF;*/
+}
+.b2{
+    color: black;
+    background-color: #E7E7E7;
+    border: 1px;
+}
+.user_table_div{
+    margin-left: 50px;
+    display: block;
+}
+.file_table_div{
+    margin-left: 50px;
+    display: none;
+}
+
+

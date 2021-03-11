@@ -101,6 +101,7 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
         log.info("该用户登录时的角色名称 ---->  " + roleService.getRoleNames(sysUser.getId()));
         String token = httpSessionService.createTokenAndUser(sysUser, roleService.getRoleNames(sysUser.getId()), permissionService.getPermissionsByUserId(sysUser.getId()));
         respVO.setAccessToken(token);
+        respVO.setUsername(sysUser.getUsername());
         log.info("LoginRespVO -----> " + respVO);
 
         return respVO;
@@ -108,7 +109,6 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
 
     @Override
     public void updateUserInfo(SysUser vo) {
-
 
         SysUser sysUser = sysUserMapper.selectById(vo.getId());
         if (null == sysUser) {

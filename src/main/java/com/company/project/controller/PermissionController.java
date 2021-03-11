@@ -40,6 +40,7 @@ public class PermissionController {
     public DataResult addPermission(@RequestBody @Valid SysPermission vo) {
         verifyFormPid(vo);
         vo.setStatus(1);
+        log.error("新增权限数据 vo ----> " +  vo);
         permissionService.save(vo);
         return DataResult.success();
     }

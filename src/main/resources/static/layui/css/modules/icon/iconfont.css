@@ -1,0 +1,25 @@
+@font-face {font-family: "layui-icon";
+  src: url('iconfont.eot?t=1614582068979'); /* IE9 */
+  src: url('iconfont.eot?t=1614582068979#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAO0AAsAAAAAB7wAAANnAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqDHIJpATYCJAMMCwgABCAFhG0HPhu3BsgekqRjUhRQiwUKAABzBNmwzd7dlwrd1a7wPR5FUEgUDocCWbpQKIxFGDQKWZoR/LQ/fDeD9WMSE1QFprnr0iDct7ZHPETShIJGkmnSvm9vbs+HE2tksliFb/W3rP0bcDn9lfg8y3IZa+oeuDDAOKBAx5wicYEE5A1jF7TE9QSaRmlBOy7zVaKgMLsF4ihasEQhY1UaCkNdqFaMLQ/oDpjV0znDC4Db4PvxBwbBRlLJzL67hwMp0f5kOFNnLPrf8fPsUDKdG2wSGctAIQ4qvfvSUXQZo6aqzTRnVhUhTRX4/yeQavrqRv94iagy89tgHvoTn46A4FM9JuH6fVR5njPgCbMG75fFqjpSJ/fzw5L0WYS6NbcsqNKvovR9oWJOnDwKk8+5pkYx4hD2vw7OTqpQJyHikdspRlx6lUC4UZg8NknqvvaDK5TJ54AEdWsRpc/NKtTLPHSpZO+jJVYPjguN/nFJevPRLokaVlTpkYnNt1k/l8Za1Yj1dVSt96dQvEnCVO1bdmBk8qHxSDvlX4khIeq7K9sg+hmJC55ulUIqP4MPI5MDsmrfphJ5f557yefveynmvIa7enURuP7D4VZRcXJ3ZAJ3Kqp9C76y7aeoa6jvpYi9CqZdip249P67Uwq3ig6FkkhcrAfWj4ViuV8JOMGnLF+f7DKr3Ix0GJ3losbJjWetuK+DP0vZOf+gZ42NKbZX45FOzVs/R+cTgiTwX1DY8imNF5d3xsK/9RuPJ0q1gbxWr2ycBbyFjBtBcXfqxK5+L77g35RU6gEo79wAaYrinQJojAayoXe3IijmOn+kGPrh4fqhzvmEuqEESc0IsrppsrCWUdGyhqq6dTQtcZ3cMiBFWpQGFpUDhF4jSLqekfXaJQvrGBXDblHVG4xo2gvBOVtmI5rDMQWZhxKExBDNyZJth1cKCxcofIM5aUXA3qDjqgHQ19HLJ0ZooTPFgNRANNM8GSIcMsEFbIaGQZDkkIbcq0Z53ralqxtR9aJqKJmJkm0OxHiQBISIgWgcschefU+p8PkFJPgMjNNQVRXeQA6X2jzQp0OvAznSWp2qbuWSVAGhKY1HBiI4iAm4ADcyrCgBSdWtNIjzVEUNCG+16KJaEV211eX15vttgCZzixwpchT14yjyObNEMfQ0AAAA') format('woff2'),
+  url('iconfont.woff?t=1614582068979') format('woff'),
+  url('iconfont.ttf?t=1614582068979') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1614582068979#layui-icon') format('svg'); /* iOS 4.1- */
+}
+
+.layui-icon {
+  font-family: "layui-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoucang:before {
+  content: "\e602";
+}
+
+.icon-shoucang1:before {
+  content: "\e629";
+}
+

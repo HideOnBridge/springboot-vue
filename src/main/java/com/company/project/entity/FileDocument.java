@@ -7,6 +7,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * mongo --> file
+ * @author mc
+ * @version V1.0
+ * @date 2021/3/4
+ */
 @Document
 public class FileDocument {
 
@@ -22,7 +28,33 @@ public class FileDocument {
     private String description; // 文件描述
     private String gridfsId;    // 大文件管理GridFS的ID
     private String pro_name;    // 项目名称
+    private String pro_ID;      // 项目编号
+    private String remarks;     // 备注str
+    private String userId;      // 文件的上传用户
 
+    public String getPro_ID() {
+        return pro_ID;
+    }
+
+    public void setPro_ID(String pro_ID) {
+        this.pro_ID = pro_ID;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public String getPro_name() {
         return pro_name;

@@ -6,6 +6,7 @@ import com.company.project.common.exception.BusinessException;
 import com.company.project.common.utils.DataResult;
 import com.company.project.common.utils.DateUtils;
 import com.company.project.entity.SysFilesEntity;
+import com.company.project.entity.SysProjectsFiles;
 import com.company.project.mapper.SysFilesMapper;
 import com.company.project.service.SysFilesService;
 import org.apache.commons.io.FileUtils;
@@ -83,6 +84,7 @@ public class SysFilesServiceImpl extends ServiceImpl<SysFilesMapper, SysFilesEnt
         this.removeByIds(ids);
 
     }
+
 
     /**
      * 获取文件后缀名

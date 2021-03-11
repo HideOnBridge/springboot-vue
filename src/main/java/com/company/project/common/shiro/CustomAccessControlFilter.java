@@ -56,7 +56,9 @@ public class CustomAccessControlFilter extends AccessControlFilter {
             if (StringUtils.isEmpty(token)) {
                 throw new BusinessException(BaseResponseCode.TOKEN_ERROR);
             }
+
             UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(token, token);
+            log.error("token " + token + "---" + usernamePasswordToken.getUsername() + "---" + usernamePasswordToken.getPassword()  );
             getSubject(servletRequest, servletResponse).login(usernamePasswordToken);
         } catch (BusinessException exception) {
             if (HttpContextUtils.isAjaxRequest(request)) {

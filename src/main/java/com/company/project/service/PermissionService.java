@@ -2,6 +2,7 @@ package com.company.project.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.company.project.entity.SysPermission;
+import com.company.project.mapper.SysPermissionMapper;
 import com.company.project.vo.resp.PermissionRespNode;
 
 import java.util.List;
@@ -84,4 +85,14 @@ public interface PermissionService extends IService<SysPermission> {
      * @param vo vo
      */
     void updatePermission(SysPermission vo);
+
+
+    /**
+     * 根据权限名称获取对应权限id
+     *
+     * @param name
+     */
+    SysPermission getIdByName(String name);
+
+
 }

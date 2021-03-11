@@ -1,0 +1,15 @@
+.layui-btn-group button{
+    color: black;
+    background-color: #E7E7E7;
+    border-radius: 4px !important;
+}
+
+.leftDiv button{
+    width: 160px !important;
+    background-color: #E7E7E7 !important;
+}
+.leftDiv{
+    border-radius: 5px;
+}
+
+

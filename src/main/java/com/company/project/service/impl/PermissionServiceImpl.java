@@ -28,10 +28,9 @@ import java.util.Set;
 
 /**
  * 菜单权限
- *
- * @author wenbin
+ * @author mc
  * @version V1.0
- * @date 2020年3月18日
+ * @date 2021/3/8
  */
 @Service
 @Slf4j
@@ -48,7 +47,7 @@ public class PermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysP
     /**
      * 根据用户查询拥有的权限
      * 先查出用户拥有的角色
-     * 再去差用户拥有的权限
+     * 再去查用户拥有的权限
      * 也可以多表关联查询
      */
     @Override
@@ -101,6 +100,12 @@ public class PermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysP
     public void updatePermission(SysPermission vo) {
         sysPermissionMapper.updateById(vo);
         httpSessionService.refreshPermission(vo.getId());
+    }
+
+    @Override
+    public SysPermission getIdByName(String name) {
+        SysPermission permission = sysPermissionMapper.getIdByName(name);
+        return permission;
     }
 
     /**

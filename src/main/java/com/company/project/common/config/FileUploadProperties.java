@@ -34,6 +34,7 @@ public class FileUploadProperties {
 
     public void setUrl(String url) {
         this.url = url;
+        System.out.println("this url ---> " + this.url + " url ----> " + url);
 
         //set accessUrl
         if (StringUtils.isEmpty(url)) {

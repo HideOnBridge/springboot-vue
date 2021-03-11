@@ -1,12 +1,18 @@
 package com.company.project.controller;
 
+import com.company.project.service.UserProjectService;
 import io.swagger.annotations.Api;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * 视图
@@ -18,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/index")
 public class IndexController {
+
+    @Resource
+    private UserProjectService userProjectService;
 
     @GetMapping("/login")
     public String logout() {
@@ -134,7 +143,7 @@ public class IndexController {
         return "dataUpload/data_list";
     }
     @GetMapping("/project")
-    public String sysProject(){
+    public String sysProject(HttpSession session){
         return "project/project_list";
     }
     @GetMapping("/project/add")
@@ -144,6 +153,22 @@ public class IndexController {
     @GetMapping("/dataBox")
     public String sysData(){
         return "dataBox/box_home";
-
     }
+    @GetMapping("/collect")
+    public String collection(){
+        return "collect/collect_list";
+    }
+    //视图传递数据
+    @GetMapping("/clickFile")
+    public String clickFile(@RequestParam String fileName){
+        System.out.println("测试数据-----> " + fileName);
+        return "fileDetail/fileDetail";
+    }
+
+    @GetMapping("/clickUser")
+    public String clickUser(@RequestParam String username){
+        System.out.println("测试数据-----> " + username);
+        return "userDetail/userDetail";
+    }
+
 }

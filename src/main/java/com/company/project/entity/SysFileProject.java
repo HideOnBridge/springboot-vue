@@ -3,13 +3,8 @@ package com.company.project.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,13 +22,13 @@ public class SysFileProject extends BaseEntity implements Serializable {
     @TableId
     private String id;
 
-    @NotBlank(message = "项目名称不可以为空!!")
+    @TableField(value = "projectName")
     private String projectName;  //项目名称
 
-    @NotBlank(message = "项目ID不可以为空!!")
+    @TableField(value = "projectID")
     private String projectID;    //项目ID
 
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Date createTime;
 
 

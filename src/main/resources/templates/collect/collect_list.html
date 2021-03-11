@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <script src="/js/jquery.js" ></script>
+    <link rel="stylesheet" href="/css/collect.css">
+    <style>
+    </style>
+    <script>
+        $(function () {
+            $(".b1").click(function () {
+                $(this).css("background-color","#1aa094");
+                $(".b2").css("background-color","#E7E7E7");
+                $(".b2").css("color","black");
+                $("#user_list").css("display","block");
+                $("#file_list").css("display","none");
+                $(".user_table_div").css("display","block");
+                $(".file_table_div").css("display","none");
+            });
+            $(".b2").click(function () {
+                $(this).css("background-color","#1aa094");
+                $(".b1").css("background-color","#E7E7E7");
+                $(".b1").css("color","black");
+                $("#file_list").css("display","block");
+                $("#user_list").css("display","none");
+                $(".file_table_div").css("display","block");
+                $(".user_table_div").css("display","none")
+
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="search">
+    <div class="layui-btn-group" >
+        <button type="button" class="layui-btn b1">人员信息数据</button>
+        <button type="button" class="layui-btn b2">文件数据</button>
+    </div>
+    <div class="layui-col-sm10 layui-col-md10 layui-col-lg10" >
+        <div class="user_table_div">
+            <div id="searchParam" shiro:hasPermission="sys:user:list">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" class="layui-input" autocomplete="off" placeholder="请输入账号">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="nickName" class="layui-input" autocomplete="off" placeholder="请输用户昵称">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" readonly class="layui-input" id="createTime" placeholder="创建时间">
+                    </div>
+                    <div class="layui-input-inline ">
+                        <button class="layui-btn" onclick="search()" id="search">查询</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--文件查询框-->
+        <div class="file_table_div">
+            <div shiro:hasPermission="sys:user:list">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input type="text" id="fileName" class="layui-input" autocomplete="off" placeholder="请输入文件名">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="fileID" class="layui-input" autocomplete="off" placeholder="请输入文件ID">
+                    </div>
+                    <div class="layui-input-inline ">
+                        <button class="layui-btn" onclick="search()" id="search_file">查询</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-sm12 layui-col-md12 layui-col-lg12" style="display: block" id="user_list">
+        <table class="layui-hide" id="collect_user_table" lay-filter="collect_user_table"></table>
+    </div>
+    <div class="layui-col-sm12 layui-col-md12 layui-col-lg12" style="display: none" id="file_list">
+        <table class="layui-hide" id="collect_file_table" lay-filter="collect_file_table"></table>
+    </div>
+
+
+</div>
+
+
+</body>
+<script type="text/html" id="tool">
+    <a class="layui-btn layui-btn-xs" lay-event="delCollect" shiro:hasPermission="sys:user:collects:delete">删除收藏</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="remarks" shiro:hasPermission="sys:user:collects:remarks">备注</a>
+</script>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="addNewUser" shiro:hasPermission="sys:user:add">添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="batchDeleted" shiro:hasPermission="sys:user:deleted">删除
+        </button>
+    </div>
+</script>
+<script src="/layui/layui.all.js"></script>
+<script src="/js/core.util.js"></script>
+<script>
+    //获取token, username
+    var token = CoreUtil.getData("access_token");
+    var userName = token.split("#")[1];
+    var table = layui.table;
+    var table_file = layui.table;
+    var layer = layui.layer;
+    var $ = jQuery = layui.jquery;
+    layui.use(['table', 'layer', 'laydate'], function () {
+        //加载user_table
+        table.render({
+            elem: '#collect_user_table'
+            , contentType: 'application/json'
+            , headers: {"authorization": token}
+            , page: true //开启分页
+            , url: '/sys/users' //数据接口
+            , method: 'POST'
+            , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                    "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                }
+            }
+            , cols: [
+                [
+                    {type: 'checkbox', fixed: 'left'},
+                    {field: 'username', title: '账号', width: 130},
+                    {field: 'phone', title: '手机号', width: 130},
+                    // {field: 'deptName', title: '所属公司', width: 120},
+                    {field: 'realName', title: '真实名称', width: 120},
+                    {field: 'nickName', title: '昵称', width: 130},
+                    {field: 'email', title: '邮箱', width: 150},
+                    {
+                        field: 'sex', title: '性别', width: 100, templet: function (item) {
+                            if (item.sex === 1) {
+                                return "男";
+                            }
+                            if (item.sex === 2) {
+                                return "女";
+                            }
+                        }
+                    },
+                    {field: 'createTime', title: '创建时间', minWidth: 120},
+                    {field: 'updateTime', title: '更新时间', minWidth: 120},
+                    {
+                        field: 'status', title: '状态', width: 100, templet: function (item) {
+                            if (item.status === 1) {
+                                return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
+                            }
+                            if (item.status === 2) {
+                                return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
+                            }
+                        }
+                    },
+                    {
+                        field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
+                            if (item.createWhere === 1) {
+                                return "Web";
+                            }
+                            if (item.createWhere === 2) {
+                                return "Android";
+                            }
+                            if (item.createWhere === 3) {
+                                return "NO_ENABLE";
+                            }
+                        }
+                    },
+                    {width: 300, toolbar: "", title: '操作'}
+                ]
+            ]
+            , toolbar: '#toolbar'
+        });
+        //加载file_table
+        var table2 = table_file.render({
+            elem: '#collect_file_table'
+            , contentType: 'application/json'
+            , headers: {"authorization": token}
+            , page: true //开启分页
+            , url: '/sys/user/collects/list?userid=' + userName //数据接口
+            , method: 'POST'
+            , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                    "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                }
+            }
+            , cols: [
+                [
+                    {type: 'checkbox', fixed: 'left'},
+                    {field: 'fileName', title: '文件名称', width: 200},
+                    {field: 'fileId', title: '文件编号', width: 200},
+                    {field: 'projectName', title: '项目名称', width:200},
+                    {field: 'createTime', title: '创建时间', width: 150},
+                    {field: 'remarks', title: '备注信息', width: 200},
+                    {width: 300, toolbar: "#tool", title: '操作'}
+                ]
+            ]
+            , toolbar: '#toolbar'
+        });
+
+
+
+        //tool 文件操作
+        table.on('tool(collect_file_table)', function (obj) {
+            var data = obj.data;
+            var username = userName;
+            switch (obj.event) {
+                case 'delCollect':
+                    var fileIds = [];
+                    fileIds.push(data.id);
+                    tipDialog(fileIds, data.fileName, username);
+                    break;
+                case 'remarks': //备注
+                    var fileid = [];
+                    fileid.push(data.id);
+                    var oldValue = data.remarks;
+                    remarks(fileid, username, oldValue);
+            }
+        });
+        var remarks = function (fileid, username, oldValue) {
+            layer.prompt({
+                formType: 0,
+                value: oldValue,  //旧值
+                title: '请输入备注信息',
+                btn: ['确定','取消'], //按钮，
+                btnAlign: 'c'
+            }, function (value, index) {
+                console.log('备注打印为===> ' + value);
+                layer.close(index);
+                CoreUtil.sendPost('/sys/user/collects/remarks', fileid + "#" + username + "#" + value , function (res) {
+                    layer.msg(res.msg);
+                    search();
+                });
+                }
+            );
+
+        };
+        var tipDialog = function (fileIds, name, username) {
+            layer.open({
+                content: '确定要取消收藏 <' + name + "> 文件吗",
+                yes: function (index, layero) {
+                    layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    CoreUtil.sendDelete("/sys/user/collects/delete", fileIds + "#" + username, function (res) {
+                        layer.msg(res.msg);
+                        search()
+                    });
+                }
+            });
+        };
+        //执行查询
+        function search() {
+            //这里以搜索为例
+            table2.reload({
+                where: { //设定异步数据接口的额外参数，任意设
+                    userid:userName
+                }
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        };
+    });
+</script>
+</html>

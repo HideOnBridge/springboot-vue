@@ -11,6 +11,7 @@ import com.company.project.service.RoleService;
 import com.company.project.service.SysRoleDeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -21,6 +22,8 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 /**
  * 角色管理
  *
@@ -30,6 +33,7 @@ import java.util.List;
  */
 @RequestMapping("/sys")
 @RestController
+@Slf4j
 @Api(tags = "组织模块-角色管理")
 public class RoleController {
     @Resource
@@ -63,6 +67,9 @@ public class RoleController {
         if (StringUtils.isEmpty(vo.getId())) {
             return DataResult.fail("id不能为空");
         }
+
+        log.error("角色vo =====> " + vo);
+
         roleService.updateRole(vo);
         return DataResult.success();
     }

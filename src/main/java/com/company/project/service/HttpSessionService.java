@@ -50,7 +50,7 @@ public class HttpSessionService {
 
     public String createTokenAndUser(SysUser user, List<String> roles, Set<String> permissions) {
         //方便根据id找到redis的key， 修改密码/退出登陆 方便使用
-        String token = getRandomToken() + "#" + user.getId();
+        String token = getRandomToken() + "#" + user.getUsername();
         JSONObject sessionInfo = new JSONObject();
         sessionInfo.put(Constant.USERID_KEY, user.getId());
         sessionInfo.put(Constant.USERNAME_KEY, user.getUsername());

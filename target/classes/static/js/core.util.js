@@ -37,6 +37,7 @@ var CoreUtil = (function () {
             },
             success: function (res) {
                 top.layer.close(loadIndex);
+                console.log(res.code)
                 if (res.code==0){
                     if(ft!=null&&ft!=undefined){
                         ft(res);
@@ -70,6 +71,7 @@ var CoreUtil = (function () {
             value: value
         })
     };
+
     /*从本地缓存拿数据*/
     coreUtil.getData = function(key){
         var localData = layui.data('LocalData');

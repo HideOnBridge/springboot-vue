@@ -26,6 +26,7 @@ spring:
         userToken: "user:token:"
         passwordError: "user:password:error:"
         permissionRefresh: "user:token:permissionRefresh:"
+        fileKey: "file:user:"
       expire:
         userToken: 604800 # 7天 7*24*3600
         passwordError: 3600 # 一个小时

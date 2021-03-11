@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="/css/project.css">
+</head>
+<style>
+    .layui-btn-group button:hover {
+        background-color: #0E9FFF !important;
+        color: white;
+    }
+</style>
+<body>
+<div class="search">
+    <div class="layui-btn-group" >
+        <button type="button" class="layui-btn usersButton">人员信息</button>
+        <button type="button" class="layui-btn phonesButton">手机信息</button>
+        <button type="button" class="layui-btn recordsButton">通话记录</button>
+        <button type="button" class="layui-btn stationsButton">基站信息</button>
+        <button type="button" class="layui-btn airsButton">航班信息</button>
+        <button type="button" class="layui-btn studentsButton">学籍信息</button>
+    </div>
+    <br/>
+    <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+        <!--通话记录div-->
+        <div class="recordsDiv">
+            <table class="layui-hide" id="recordsTable" lay-filter="recordsTable" ></table>
+        </div>
+        <!--手机信息div-->
+        <div class="phoneDiv" style="display: none">
+            <span>手机信息div------> 别喊~</span>
+        </div>
+
+
+        <!--人员信息div-->
+        <div class="layui-col-sm2 layui-col-md2 layui-col-lg2 leftDiv" style="background-color: #E7E7E7;position: relative;height: 760px;">
+            <div style="width: 5px;height: 30px;background-color: #1E9FFF;position: absolute;left: 10px"></div></button><span style="position: absolute;left: 30px;line-height: 30px;">人员基本信息</span><br/><br/>
+            <button type="button" class="layui-btn layui-btn-normal">姓</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">名</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">中间名</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">性别</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">出生日期</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">电话号码</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">职业</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">证件类型</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">证件号码</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">证件签发日期</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">证件签发地</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">邮编</button><span>张三</span><br/><br/>
+            <div style="width: 5px;height: 30px;background-color: #1E9FFF;position: absolute;left: 10px"></div></button><span style="position: absolute;left: 30px;line-height: 30px;">住址信息</span><br/><br/>
+            <button type="button" class="layui-btn layui-btn-normal">国家</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">洲/省</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">市/地区</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">街道</button><span>张三</span><br/>
+            <button type="button" class="layui-btn layui-btn-normal">地区类型(城市/农村)</button><span>张三</span><br/><br/>
+
+        </div>
+        <div class="layui-col-sm10 layui-col-md10 layui-col-lg10 rightDiv">
+            <div class="layui-col-sm7 layui-col-md7 layui-col-lg7" >
+                <table class="layui-hide relationTable" lay-filter="relationTable">
+
+                </table>
+            </div>
+            <div class="layui-col-sm5 layui-col-md5 layui-col-lg5" >
+                <table class="layui-hide rideTable" lay-filter="rideTable">
+
+                </table>
+            </div>
+            <div class="layui-col-sm4 layui-col-md4 layui-col-lg4" >
+                <table class="layui-hide stationTable" lay-filter="rideTable">
+
+                </table>
+            </div>
+            <div class="layui-col-sm4 layui-col-md4 layui-col-lg4" >
+                <table class="layui-hide recordNumTable" lay-filter="rideTable">
+
+                </table>
+            </div>
+            <div class="layui-col-sm4 layui-col-md4 layui-col-lg4" >
+                <table class="layui-hide recordTimeTable" lay-filter="rideTable">
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="/layui/layui.all.js"></script>
+<script src="/js/core.util.js"></script>
+<script>
+    //获取token
+    var token = CoreUtil.getData("access_token");
+    //地址栏转义token中的#号
+    var tokenQuery = token.replace("#", "%23");
+    var tableIns1;
+    var table = layui.table;
+    var form = layui.form;
+    var layer = layui.layer;
+    var $ = jQuery = layui.jquery;
+    var laydate = layui.laydate;
+    var tree = layui.tree;
+    var transfer = layui.transfer;
+    var deptNo = null;
+    var startTime = null;
+    var endTime = null;
+    $(function () {
+        layui.use(['table', 'layer' ], function () {
+            $('.usersButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.phonesButton').css('background-color','#E7E7E7');
+                $('.recordsButton').css('background-color','#E7E7E7');
+                $('.phoneDiv').css('display', 'none');
+                $('.leftDiv').css('display', 'block');
+                $('.rightDiv').css('display', 'block');
+                $('.recordsDiv').css('display', 'none');
+                table.render({
+                    elem: '.relationTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: false//关闭分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {field: 'username', title: '账号', width: 100},
+                            {field: 'phone', title: '手机号', width: 100},
+                            {field: 'realName', title: '真实名称', width: 100},
+                            {field: 'nickName', title: '昵称', width: 150},
+                            {field: 'email', title: '邮箱', width: 150}
+                        ]
+                    ],
+                    height: '370'
+                });
+                table.render({
+                    elem: '.rideTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: false
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {field: 'username', title: '账号', width: 100},
+                            {field: 'phone', title: '手机号', width: 100},
+                            {field: 'realName', title: '真实名称', width: 100},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150}
+                        ]
+                    ],
+                    height: '370'
+                });
+                table.render({
+                    elem: '.stationTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: false //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {field: 'username', title: '账号', width: 100},
+                            {field: 'phone', title: '手机号', width: 100},
+                            {field: 'realName', title: '真实名称', width: 100},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150}
+                        ]
+                    ],
+                    height: '350'
+                });
+                table.render({
+                    elem: '.recordNumTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: false //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {field: 'username', title: '账号', width: 100},
+                            {field: 'phone', title: '手机号', width: 100},
+                            {field: 'realName', title: '真实名称', width: 100},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150}
+                        ]
+                    ],
+                    height: '350'
+                });
+                table.render({
+                    elem: '.recordTimeTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: false //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {field: 'username', title: '账号', width: 100},
+                            {field: 'phone', title: '手机号', width: 100},
+                            {field: 'realName', title: '真实名称', width: 100},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150}
+                        ]
+                    ], height: '350'
+                });
+
+
+            });
+            $('.recordsButton').click(function () {
+                $('.leftDiv').css('display', 'none');
+                $('.rightDiv').css('display', 'none');
+                $('.phoneDiv').css('display', 'none');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $(this).css('background-color','#0E9FFF');
+                $('.recordsDiv').css('display', 'block');
+                table.render({
+                    elem: '#recordsTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: true //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {type: 'checkbox', fixed: 'left'},
+                            {field: 'username', title: '账号', width: 130},
+                            {field: 'phone', title: '手机号', width: 130},
+                            {field: 'realName', title: '真实名称', width: 120},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150},
+                            {
+                                field: 'sex', title: '性别', width: 100, templet: function (item) {
+                                    if (item.sex === 1) {
+                                        return "男";
+                                    }
+                                    if (item.sex === 2) {
+                                        return "女";
+                                    }
+                                }
+                            },
+                            {field: 'createTime', title: '创建时间', minWidth: 120},
+                            {field: 'updateTime', title: '更新时间', minWidth: 120},
+                            {
+                                field: 'status', title: '状态', width: 100, templet: function (item) {
+                                    if (item.status === 1) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
+                                    }
+                                    if (item.status === 2) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
+                                    }
+                                }
+                            },
+                            {
+                                field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
+                                    if (item.createWhere === 1) {
+                                        return "Web";
+                                    }
+                                    if (item.createWhere === 2) {
+                                        return "Android";
+                                    }
+                                    if (item.createWhere === 3) {
+                                        return "NO_ENABLE";
+                                    }
+                                }
+                            },
+                            {width: 300, toolbar: "", title: '操作'}
+                        ]
+                    ]
+                    , toolbar: '#toolbar'
+                });
+            });
+            $('.phonesButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $('.recordsButton').css('background-color','#E7E7E7');
+                $('.leftDiv').css('display', 'none');
+                $('.rightDiv').css('display', 'none');
+                $('.recordsDiv').css('display', 'none');
+                $('.phoneDiv').css('display', 'block');
+                /*数据处理*/
+            });
+        });
+    })
+
+
+</script>
+</html>

@@ -5,18 +5,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/css/custom.form.css">
-    <style>
-        .custom-tree-item-clicked
-        {
-            color:#FC9003
-        }
-    </style>
 </head>
 <body>
 <div class="panel-heading title"></div>
 <div class="layui-card-body">
-    <form class="layui-form " action="" lay-filter="deptInfo" style="width: 700px;margin-top: 10px">
+    <form class="layui-form " action="" style="width: 700px;margin-top: 10px">
         <div class="layui-form-item">
             <label class="layui-form-label">项目名称</label>
             <div class="layui-input-block">
@@ -32,7 +25,7 @@
 <!--        <div class="layui-form-item">-->
 <!--            <div class="layui-form-label ">项目</div>-->
 <!--            <div class="layui-input-block">-->
-<!--                <input type="phone" name="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">-->
+<!--                <input type="phone" name="phone" placeholder="" autocomplete="off" class="layui-input">-->
 <!--            </div>-->
 <!--        </div>-->
         <div class="layui-form-item">
@@ -42,24 +35,36 @@
         </div>
     </form>
 </div>
+
 </body>
+<script src="/layui/layui.all.js"></script>
+<script src="/js/core.util.js"></script>
 <script>
     var form = layui.form;
-    /**/
-    form.on('submit(submit)', function (data) {
-        if (data.field.id === undefined || data.field.id === null || data.field.id === "") {
-            CoreUtil.sendPost("/", data.field, function (res) {
+    var layer = layui.layer;
+    var $ = jquery = layui.jquery;
+        /**/
+        form.on('submit(submit)', function (data) {
+
+            if (data.field.projectName == '') {
+                layer.msg('请输入项目名称');
+                return false;
+            }
+            if (data.field.projectID == '') {
+                layer.msg('项目名称不能为空');
+                return false;
+            }
+            var params = {
+                projectName: data.field.projectName,
+                projectID: data.field.projectID,
+            }
+            CoreUtil.sendPost("/sys/project/add", params, function (res) {
+                layer.msg("新增成功!")
 
             });
-        } else {
-            CoreUtil.sendPut("/sys/user", data.field, function (res) {
-
-            });
-        }
-        return false;
-    });
-
-
+            return false;  // 必须加上，否则接收不到响应，一直loading
+        });
 
 </script>
+
 </html>

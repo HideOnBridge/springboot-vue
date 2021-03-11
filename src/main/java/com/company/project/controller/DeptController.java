@@ -70,13 +70,14 @@ public class DeptController {
     @LogAnnotation(title = "机构管理", action = "树型组织列表")
     @RequiresPermissions(value = {"sys:user:list", "sys:user:update", "sys:user:add", "sys:dept:add", "sys:dept:update"}, logical = Logical.OR)
     public DataResult getTree(@RequestParam(required = false) String deptId) {
+        System.out.println("组织id ------> " + deptId + "----data ------>" +deptService.deptTreeList(deptId, false));
         return DataResult.success(deptService.deptTreeList(deptId, false));
     }
 
     @GetMapping("/depts")
     @ApiOperation(value = "获取机构列表接口")
     @LogAnnotation(title = "机构管理", action = "获取所有组织机构")
-    @RequiresPermissions("sys:dept:list")
+    //@RequiresPermissions("sys:dept:list")
     public DataResult getDeptAll() {
         List<SysDept> deptList = deptService.list();
         deptList.parallelStream().forEach(entity -> {
@@ -85,6 +86,7 @@ public class DeptController {
                 entity.setPidName(parentDept.getName());
             }
         });
+        System.out.println("部门树数据---------> " + deptList);
         return DataResult.success(deptList);
     }
 
