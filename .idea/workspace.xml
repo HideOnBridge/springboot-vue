@@ -2,91 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d4295c3-a997-4fe2-abd1-5c2cbcf46995" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysUserCollectsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysFileCollects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysProjectsFiles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysFileCollectsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysProjectsFilesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/SysFileCollectsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/SysProjectsFilesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/UserProjectService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/SysFileCollectsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/SysProjectsFilesServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/collect.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/demo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/demo_index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/icon/iconfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/collect/collect_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fileDetail/fileDetail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/userDetail/userDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/aop/annotation/BrowsingAnnotation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/aop/aspect/BrowsingAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysBrowsingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysBrowsingFileHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysBrowsingUserHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysBrowsingUserHistoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/SysBrowsingUserHistoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/SysBrowsingUserHistoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/browsing/browsing_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/config/FileUploadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/config/FileUploadProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/CustomAccessControlFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/common/shiro/CustomAccessControlFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/DeptController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysFilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysFilesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/controller/SysProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/entity/FileDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/FileDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysFileProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/entity/SysFileProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysPermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysPermissionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysRolePermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysRolePermissionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/mapper/SysUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/HttpSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/HttpSessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/PermissionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/SysFilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/SysFilesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/PermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/PermissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/SysFilesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/SysFilesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/project/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/core.util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/core.util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dataUpload/data_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dataUpload/data_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/depts/dept_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/depts/dept_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project/project_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project/project_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/roles/role_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/roles/role_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/company/project/CompanyFrameApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/company/project/CompanyFrameApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userDetail/userDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userDetail/userDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/config/FileUploadProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/config/FileUploadProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/CustomAccessControlFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/common/shiro/CustomAccessControlFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/DeptController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/DeptController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/PermissionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/PermissionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/RoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/controller/SysFilesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/controller/SysFilesController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/mapper/SysPermissionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/mapper/SysPermissionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/mapper/SysUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/mapper/SysUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/HttpSessionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/HttpSessionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/PermissionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/PermissionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/PermissionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/PermissionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/SysFilesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/SysFilesServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/project/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/core.util.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/core.util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/depts/dept_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/depts/dept_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/roles/role_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/roles/role_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/users/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/company/project/CompanyFrameApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/company/project/CompanyFrameApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,16 +45,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="master" />
         <option value="mc" />
       </list>
     </option>
@@ -277,7 +214,8 @@
       <workItem from="1614232781285" duration="337000" />
       <workItem from="1614233576418" duration="6216000" />
       <workItem from="1614561596942" duration="20381000" />
-      <workItem from="1614652229606" duration="116450000" />
+      <workItem from="1614652229606" duration="123474000" />
+      <workItem from="1615511666119" duration="23992000" />
     </task>
     <task id="LOCAL-00001" summary="version 1.11111">
       <created>1611885190089</created>
@@ -328,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613815405702</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="version 1.4.1">
+      <created>1615449532784</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615449532785</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,11 +365,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="627" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614587864106" />
-    <state x="274" y="0" key="CommitChangelistDialog2" timestamp="1615449476631">
+    <state x="274" y="0" key="CommitChangelistDialog2" timestamp="1615540704956">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="219" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1613610427730" />
-    <state x="274" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615449476631" />
+    <state x="274" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615540704956" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1613610401509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -434,46 +379,46 @@
     </state>
     <state x="592" y="220" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613438366147" />
     <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611633308989" />
-    <state width="1869" height="702" key="GridCell.Tab.0.bottom" timestamp="1615448083502">
+    <state width="1869" height="495" key="GridCell.Tab.0.bottom" timestamp="1615540607905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083502" />
-    <state width="1869" height="702" key="GridCell.Tab.0.center" timestamp="1615448083501">
+    <state width="1869" height="495" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607905" />
+    <state width="1869" height="495" key="GridCell.Tab.0.center" timestamp="1615540607904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083501" />
-    <state width="1869" height="702" key="GridCell.Tab.0.left" timestamp="1615448083501">
+    <state width="1869" height="495" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607904" />
+    <state width="1869" height="495" key="GridCell.Tab.0.left" timestamp="1615540607904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083501" />
-    <state width="1869" height="702" key="GridCell.Tab.0.right" timestamp="1615448083501">
+    <state width="1869" height="495" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607904" />
+    <state width="1869" height="495" key="GridCell.Tab.0.right" timestamp="1615540607904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083501" />
-    <state width="1869" height="702" key="GridCell.Tab.1.bottom" timestamp="1615448083502">
+    <state width="1869" height="495" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607904" />
+    <state width="1869" height="495" key="GridCell.Tab.1.bottom" timestamp="1615540607905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083502" />
-    <state width="1869" height="702" key="GridCell.Tab.1.center" timestamp="1615448083502">
+    <state width="1869" height="495" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607905" />
+    <state width="1869" height="495" key="GridCell.Tab.1.center" timestamp="1615540607905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083502" />
-    <state width="1869" height="702" key="GridCell.Tab.1.left" timestamp="1615448083502">
+    <state width="1869" height="495" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607905" />
+    <state width="1869" height="495" key="GridCell.Tab.1.left" timestamp="1615540607905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083502" />
-    <state width="1869" height="702" key="GridCell.Tab.1.right" timestamp="1615448083502">
+    <state width="1869" height="495" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607905" />
+    <state width="1869" height="495" key="GridCell.Tab.1.right" timestamp="1615540607905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="215" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1613384271145" />
-    <state width="1869" height="702" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615448083502" />
+    <state width="1869" height="495" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615540607905" />
     <state width="1869" height="417" key="GridCell.Tab.2.bottom" timestamp="1615430892513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -498,11 +443,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1612319809185" />
-    <state x="360" y="0" width="1139" height="824" key="SettingsEditor" timestamp="1612340268300">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="463" y="157" width="1139" height="824" key="SettingsEditor" timestamp="1615511803495">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="360" y="0" width="1139" height="824" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1612340268300" />
-    <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611628200412" />
+    <state x="463" y="157" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615511803495" />
     <state x="338" y="106" key="Vcs.Push.Dialog.v2" timestamp="1613815443443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -545,10 +490,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1611973275660" />
-    <state x="623" y="225" width="840" height="678" key="search.everywhere.popup" timestamp="1615357767098">
+    <state x="623" y="225" width="840" height="678" key="search.everywhere.popup" timestamp="1615537814166">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1612430748157" />
-    <state x="623" y="225" width="840" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615357767098" />
+    <state x="623" y="225" width="840" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615537814166" />
   </component>
 </project>

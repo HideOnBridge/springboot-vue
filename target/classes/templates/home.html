@@ -9,9 +9,9 @@
     <!--引入自定义图标-->
     <link rel="stylesheet" href="/layui/css/modules/icon/iconfont.css">
     <style>
-        .layui-tab-title .layui-this{
-            background-color:#009688;color:#eee;
-        }
+        /*.layui-tab-title .layui-this{*/
+        /*    color:#eee;*/
+        /*}*/
         .first-tab i.layui-tab-close
         {display:none !important;}
         .layui-layout-admin .layui-header{background-color:#1aa094 !important;}.layui-layout-admin .layui-logo{background-color:#0c0c0c !important;}
@@ -28,6 +28,8 @@
         .closeBox .layui-nav-item {line-height:40px;}
         .closeBox .layui-nav-item > a,.closeBox .layui-nav-item > a:hover {color:#000;}
         .closeBox .layui-nav-child {top:40px;}
+        .layui-layout-left{height: 60px}
+        .layui-body{width: 100%;left: 0}
 
     </style>
     <style id="layuimini-bg-color">
@@ -42,13 +44,16 @@
             SJRH
         </div>
 
-        <a>
-            <div class="layuimini-tool-left"  onclick="iconHide()">
-                <i class="icon-color layui-icon layui-icon-shrink-right" style="color:white" id="hide">
+<!--        <a>-->
+<!--            <div class="layuimini-tool-left"  onclick="iconHide()">-->
+<!--                <i class="icon-color layui-icon layui-icon-shrink-right" style="color:white" id="hide">-->
 
-                </i>
-            </div>
-        </a>
+<!--                </i>-->
+<!--            </div>-->
+<!--        </a>-->
+        <div class="navBar layui-layout-left" id="navBarId">
+
+        </div>
 
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
@@ -76,16 +81,16 @@
         </ul>
     </div>
     <!-- 左侧菜单-->
-    <div id="mainmenu" class="layui-side layui-bg-cyan">
-        <div class="layui-side-scroll">
-            <div class="navBar layui-side-scroll" id="navBarId">
+<!--    <div id="mainmenu" class="layui-side layui-bg-cyan">-->
+<!--        <div class="layui-side-scroll">-->
+<!--            <div class="navBar layui-side-scroll" id="navBarId">-->
 
-            </div>
-        </div>
-    </div>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div class="layui-tab" lay-filter="tab" lay-allowclose="true">
+        <div class="layui-tab layui-tab-brief" lay-filter="tab" lay-allowclose="true">
             <ul class="layui-tab-title" style="width: 90%">
                 <li class="first-tab layui-this">
                     <i class="layui-icon layui-icon-home"></i>
@@ -170,7 +175,7 @@
             $("#nickName").html(res.data.userInfo.username);
             var data = res.data.menus;
             if (data != "" && data.length > 0) {
-                var ulHtml = '<ul class="layui-nav layui-nav-tree layui-left-nav" lay-filter="demo" onclick="ulHide()">';
+                var ulHtml = '<ul class="layui-nav" lay-filter="demo" onclick="ulHide()">';
                 if (data != null && data.length > 0) {
                     $.each(data, function (index, item) {
                         // if (index == 0) {

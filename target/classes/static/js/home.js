@@ -157,11 +157,11 @@ var buildBgColorHtml = function () {
  function bgColorConfigFun(bgcolorId) {
     var bgColorConfig = [
         {
-            headerRight: '#E7E7E7',
-            headerRightThis: '#E7E7E7',
-            headerLogo: '#243346',
+            headerRight: '#0c0c0c',
+            headerRightThis: '#0c0c0c',
+            headerLogo: '#0c0c0c',
             menuLeft: '#2f4056',
-            menuLeftThis: '#1aa094',
+            menuLeftThis: '#0c0c0c',
             menuLeftHover: '#3b3f4b',
         },
         {

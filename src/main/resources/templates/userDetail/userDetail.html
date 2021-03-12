@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,6 +15,7 @@
 </style>
 <body>
 <div class="search">
+
     <div class="layui-btn-group" >
         <button type="button" class="layui-btn usersButton">人员信息</button>
         <button type="button" class="layui-btn phonesButton">手机信息</button>
@@ -24,6 +25,7 @@
         <button type="button" class="layui-btn studentsButton">学籍信息</button>
     </div>
     <br/>
+    <input type="hidden" id="param" th:value="${session.param}" />
     <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
         <!--通话记录div-->
         <div class="recordsDiv">
@@ -32,6 +34,18 @@
         <!--手机信息div-->
         <div class="phoneDiv" style="display: none">
             <span>手机信息div------> 别喊~</span>
+        </div>
+        <!--基站信息div-->
+        <div class="stationDiv">
+            <table class="layui-hide" id="stationTable" lay-filter="stationTable"></table>
+        </div>
+        <!--航班信息div-->
+        <div class="airsDiv">
+            <table class="layui-hide" id="airsTable" lay-filter="airsTable"></table>
+        </div>
+        <!--学籍信息div-->
+        <div class="studentsDiv">
+            <table class="layui-hide" id="studentsTable" lay-filter="studentsTable"></table>
         </div>
 
 
@@ -102,22 +116,25 @@
     var form = layui.form;
     var layer = layui.layer;
     var $ = jQuery = layui.jquery;
-    var laydate = layui.laydate;
-    var tree = layui.tree;
-    var transfer = layui.transfer;
-    var deptNo = null;
-    var startTime = null;
-    var endTime = null;
+
     $(function () {
+        const param = $('#param').val();
+        console.log('param ----> ' + param);
         layui.use(['table', 'layer' ], function () {
             $('.usersButton').click(function () {
                 $(this).css('background-color','#0E9FFF');
                 $('.phonesButton').css('background-color','#E7E7E7');
                 $('.recordsButton').css('background-color','#E7E7E7');
+                $('.stationsButton').css('background-color','#E7E7E7');
+                $('.studentsButton').css('background-color','#E7E7E7');
+                $('.airsButton').css('background-color','#E7E7E7');
                 $('.phoneDiv').css('display', 'none');
+                $('.recordsDiv').css('display', 'none');
+                $('.stationDiv').css('display', 'none');
+                $('.studentsDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'none');
                 $('.leftDiv').css('display', 'block');
                 $('.rightDiv').css('display', 'block');
-                $('.recordsDiv').css('display', 'none');
                 table.render({
                     elem: '.relationTable'
                     , contentType: 'application/json'
@@ -247,15 +264,20 @@
                         ]
                     ], height: '350'
                 });
-
-
             });
             $('.recordsButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $('.stationsButton').css('background-color','#E7E7E7');
+                $('.phoneButton').css('background-color','#E7E7E7');
+                $('.studentsButton').css('background-color','#E7E7E7');
+                $('.airsButton').css('background-color','#E7E7E7');
+                $('.stationDiv').css('display', 'none');
                 $('.leftDiv').css('display', 'none');
                 $('.rightDiv').css('display', 'none');
                 $('.phoneDiv').css('display', 'none');
-                $('.usersButton').css('background-color','#E7E7E7');
-                $(this).css('background-color','#0E9FFF');
+                $('.studentsDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'none');
                 $('.recordsDiv').css('display', 'block');
                 table.render({
                     elem: '#recordsTable'
@@ -325,15 +347,259 @@
                 $(this).css('background-color','#0E9FFF');
                 $('.usersButton').css('background-color','#E7E7E7');
                 $('.recordsButton').css('background-color','#E7E7E7');
+                $('.stationsButton').css('background-color','#E7E7E7');
+                $('.studentsButton').css('background-color','#E7E7E7');
+                $('.airsButton').css('background-color','#E7E7E7');
                 $('.leftDiv').css('display', 'none');
                 $('.rightDiv').css('display', 'none');
                 $('.recordsDiv').css('display', 'none');
+                $('.stationDiv').css('display', 'none');
+                $('.studentsDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'none');
                 $('.phoneDiv').css('display', 'block');
+
                 /*数据处理*/
             });
-        });
-    })
 
+            $('.stationsButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $('.recordsButton').css('background-color','#E7E7E7');
+                $('.phonesButton').css('background-color','#E7E7E7');
+                $('.studentsButton').css('background-color','#E7E7E7');
+                $('.airsButton').css('background-color','#E7E7E7');
+                $('.leftDiv').css('display', 'none');
+                $('.rightDiv').css('display', 'none');
+                $('.recordsDiv').css('display', 'none');
+                $('.phoneDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'none');
+                $('.studentsDiv').css('display', 'none');
+                $('.stationDiv').css('display', 'block');
+                table.render({
+                    elem: '#stationTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: true //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {type: 'checkbox', fixed: 'left'},
+                            {field: 'username', title: '账号', width: 130},
+                            {field: 'phone', title: '手机号', width: 130},
+                            {field: 'realName', title: '真实名称', width: 120},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150},
+                            {
+                                field: 'sex', title: '性别', width: 100, templet: function (item) {
+                                    if (item.sex === 1) {
+                                        return "男";
+                                    }
+                                    if (item.sex === 2) {
+                                        return "女";
+                                    }
+                                }
+                            },
+                            {field: 'createTime', title: '创建时间', minWidth: 120},
+                            {field: 'updateTime', title: '更新时间', minWidth: 120},
+                            {
+                                field: 'status', title: '状态', width: 100, templet: function (item) {
+                                    if (item.status === 1) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
+                                    }
+                                    if (item.status === 2) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
+                                    }
+                                }
+                            },
+                            {
+                                field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
+                                    if (item.createWhere === 1) {
+                                        return "Web";
+                                    }
+                                    if (item.createWhere === 2) {
+                                        return "Android";
+                                    }
+                                    if (item.createWhere === 3) {
+                                        return "NO_ENABLE";
+                                    }
+                                }
+                            },
+                            {width: 300, toolbar: "", title: '操作'}
+                        ]
+                    ]
+                    , toolbar: '#toolbar'
+                });
+            });
+
+            $('.airsButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $('.recordsButton').css('background-color','#E7E7E7');
+                $('.phonesButton').css('background-color','#E7E7E7');
+                $('.stationsButton').css('background-color','#E7E7E7');
+                $('.studentsButton').css('background-color','#E7E7E7');
+                $('.leftDiv').css('display', 'none');
+                $('.rightDiv').css('display', 'none');
+                $('.recordsDiv').css('display', 'none');
+                $('.phoneDiv').css('display', 'none');
+                $('.studentsDiv').css('display', 'none');
+                $('.stationDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'block');
+                table.render({
+                    elem: '#airsTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: true //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {type: 'checkbox', fixed: 'left'},
+                            {field: 'username', title: '账号', width: 130},
+                            {field: 'phone', title: '手机号', width: 130},
+                            {field: 'realName', title: '真实名称', width: 120},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150},
+                            {
+                                field: 'sex', title: '性别', width: 100, templet: function (item) {
+                                    if (item.sex === 1) {
+                                        return "男";
+                                    }
+                                    if (item.sex === 2) {
+                                        return "女";
+                                    }
+                                }
+                            },
+                            {field: 'createTime', title: '创建时间', minWidth: 120},
+                            {field: 'updateTime', title: '更新时间', minWidth: 120},
+                            {
+                                field: 'status', title: '状态', width: 100, templet: function (item) {
+                                    if (item.status === 1) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
+                                    }
+                                    if (item.status === 2) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
+                                    }
+                                }
+                            },
+                            {
+                                field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
+                                    if (item.createWhere === 1) {
+                                        return "Web";
+                                    }
+                                    if (item.createWhere === 2) {
+                                        return "Android";
+                                    }
+                                    if (item.createWhere === 3) {
+                                        return "NO_ENABLE";
+                                    }
+                                }
+                            },
+                            {width: 300, toolbar: "", title: '操作'}
+                        ]
+                    ]
+                    , toolbar: '#toolbar'
+                });
+            });
+
+            $('.studentsButton').click(function () {
+                $(this).css('background-color','#0E9FFF');
+                $('.usersButton').css('background-color','#E7E7E7');
+                $('.recordsButton').css('background-color','#E7E7E7');
+                $('.phonesButton').css('background-color','#E7E7E7');
+                $('.stationsButton').css('background-color','#E7E7E7');
+                $('.airsButton').css('background-color','#E7E7E7');
+                $('.leftDiv').css('display', 'none');
+                $('.rightDiv').css('display', 'none');
+                $('.recordsDiv').css('display', 'none');
+                $('.phoneDiv').css('display', 'none');
+                $('.airsDiv').css('display', 'none');
+                $('.stationDiv').css('display', 'none');
+                $('.studentsDiv').css('display', 'block');
+                table.render({
+                    elem: '#studentsTable'
+                    , contentType: 'application/json'
+                    , headers: {"authorization": token}
+                    , page: true //开启分页
+                    , url: '/sys/users' //数据接口
+                    , method: 'POST'
+                    , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                            "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                        }
+                    }
+                    , cols: [
+                        [
+                            {type: 'checkbox', fixed: 'left'},
+                            {field: 'username', title: '账号', width: 130},
+                            {field: 'phone', title: '手机号', width: 130},
+                            {field: 'realName', title: '真实名称', width: 120},
+                            {field: 'nickName', title: '昵称', width: 130},
+                            {field: 'email', title: '邮箱', width: 150},
+                            {
+                                field: 'sex', title: '性别', width: 100, templet: function (item) {
+                                    if (item.sex === 1) {
+                                        return "男";
+                                    }
+                                    if (item.sex === 2) {
+                                        return "女";
+                                    }
+                                }
+                            },
+                            {field: 'createTime', title: '创建时间', minWidth: 120},
+                            {field: 'updateTime', title: '更新时间', minWidth: 120},
+                            {
+                                field: 'status', title: '状态', width: 100, templet: function (item) {
+                                    if (item.status === 1) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" checked disabled>';
+                                    }
+                                    if (item.status === 2) {
+                                        return '  <input type="checkbox" lay-skin="switch" lay-text="正常|禁用" disabled>';
+                                    }
+                                }
+                            },
+                            {
+                                field: 'createWhere', title: '注册涞源', width: 100, templet: function (item) {
+                                    if (item.createWhere === 1) {
+                                        return "Web";
+                                    }
+                                    if (item.createWhere === 2) {
+                                        return "Android";
+                                    }
+                                    if (item.createWhere === 3) {
+                                        return "NO_ENABLE";
+                                    }
+                                }
+                            },
+                            {width: 300, toolbar: "", title: '操作'}
+                        ]
+                    ]
+                    , toolbar: '#toolbar'
+                });
+
+            })
+        });
+    });
 
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.company.project.controller;
 
+import com.company.project.common.aop.annotation.BrowsingAnnotation;
 import com.company.project.service.UserProjectService;
 import io.swagger.annotations.Api;
 import org.apache.shiro.SecurityUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -158,17 +160,26 @@ public class IndexController {
     public String collection(){
         return "collect/collect_list";
     }
-    //视图传递数据
+
+    //双击
     @GetMapping("/clickFile")
+    @BrowsingAnnotation(sign = "2")
     public String clickFile(@RequestParam String fileName){
         System.out.println("测试数据-----> " + fileName);
         return "fileDetail/fileDetail";
     }
 
     @GetMapping("/clickUser")
-    public String clickUser(@RequestParam String username){
+    @BrowsingAnnotation(sign = "1")
+    public String clickUser(@RequestParam String username, HttpServletRequest request){
+        request.getSession().setAttribute("param",username);
         System.out.println("测试数据-----> " + username);
         return "userDetail/userDetail";
+    }
+
+    @GetMapping("/sysBrowsing")
+    public String sysBrowsing(){
+        return "browsing/browsing_list";
     }
 
 }

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<body>
+<table class="layui-hide" id="browsing_table" lay-filter="browsing_table"></table>
+
+</body>
+<script type="text/html" id="tool">
+
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="collect">收藏</a>
+    <a class="layui-btn layui-btn-warm layui-btn-sm" lay-event="remarks" >备注</a>
+
+
+</script>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-group">
+        <button type="button" class="layui-btn layui-btn-sm" lay-event="getCheckData">
+            批量删除
+        </button>
+    </div>
+</script>
+
+<script src="/layui/layui.all.js"></script>
+<script src="/js/core.util.js"></script>
+<script>
+    //获取token
+    var token = CoreUtil.getData("access_token");
+    var userName = token.split("#")[1]; //当前登录username
+    //地址栏转义token中的#号
+    var tokenQuery = token.replace("#", "%23");
+    var tableIns1;
+    var table = layui.table;
+    var laypage = layui.laypage
+    var form = layui.form;
+    var layer = layui.layer;
+    var $ = jQuery = layui.jquery;
+    layui.use(['table', 'laypage', 'layer', 'laydate'], function () {
+        //加载table
+        tableIns1 = table.render({
+            elem: '#browsing_table'
+            , contentType: 'application/json'
+            , headers: {"authorization": token}
+            , page: true //开启分页
+            , url: '/sys/browsing/list?username=' + userName //数据接口
+            , method: 'POST'
+            , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": CoreUtil.isEmpty(res.data) ? 0 : res.data.total, //解析数据长度
+                    "data": CoreUtil.isEmpty(res.data) ? null : res.data.records //解析数据列表
+                }
+            }
+            , cols: [
+                [
+                    {type: 'checkbox', fixed: 'left'},
+                    {field: 'id', title: 'id', width: 200},
+                    {field: 'projectName', title: '项目名称', width: 140},
+                    {field: 'browseUserId', title: '用户id', width: 140},
+                    {field: 'username', title: '用户名', width: 140},
+                    {
+                        field: 'sex', title: '性别', width: 100, templet: function (item) {
+                            if (item.sex === 1) {
+                                return "男";
+                            }
+                            if (item.sex === 2) {
+                                return "女";
+                            }
+                        }
+                    },
+                    {field: 'IDType', title: '证件类型', minWidth: 140},
+                    {field: 'IDcard', title: '证件号码', minWidth: 150},
+                    {field: 'phone', title: '电话号码', minWidth: 100},
+                    {field: 'area', title: '地区', minWidth: 150},
+                    {field: 'birthday', title: '出生日期', width: 150},
+                    {field: 'remarks', title: '备注', minWidth: 150},
+                    {width: 200, toolbar: "#tool", title: '操作'}
+                ]
+            ]
+            , toolbar: '#toolbar'
+        });
+
+        //tool 文件操作
+        table.on('tool(browsing_table)', function (obj) {
+            var data = obj.data;
+            var username = userName;
+            switch (obj.event) {
+                case 'collect':
+                    var usersid = [];
+                    usersid.push(data.id);
+                    tipDialog(usersid, data.username, username);
+                    break;
+                case 'remarks': //备注
+                    var usersid = [];
+                    usersid.push(data.id);
+                    var oldValue = data.remarks;
+                    remarks(usersid, username, oldValue);
+            }
+        });
+        var remarks = function (usersid, username, oldValue) {
+            layer.prompt({
+                    formType: 0,
+                    value: oldValue,  //旧值
+                    title: '请输入备注信息',
+                    btn: ['确定','取消'], //按钮，
+                    btnAlign: 'c'
+                }, function (value, index) {
+                    console.log('备注打印为===> ' + value);
+                    layer.close(index);
+                    CoreUtil.sendPost('/sys/browsing/remarks', usersid + "#" + username + "#" + value , function (res) {
+                        layer.msg(res.msg);
+                        search();
+                    });
+                }
+            );
+
+        };
+        var tipDialog = function (fileIds, name, username) {
+            layer.open({
+                content: '确定要收藏 < ' + name + ' > 用户吗',
+                yes: function (index, layero) {
+                    layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    CoreUtil.sendPost("/sysFiles/collects", fileIds + '#' + username + '#' + pid + '#' + name , function (res) {
+                        layer.msg(res.msg);
+                        search()
+                    });
+                }
+            });
+        };
+
+    });
+    //执行查询
+    function search() {
+        //这里以搜索为例
+        tableIns1.reload({
+            where: { //设定异步数据接口的额外参数，任意设
+
+            }
+            , page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+    };
+
+</script>
+</html>
